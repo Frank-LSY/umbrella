@@ -1,0 +1,17 @@
+<view class="homepage">
+	<view>
+		<image src="../../../images/login_bg.png" class="login-bg"/>
+		<image src="../../../images/btn_wxlogin.png" class="btn-wxlogin" bindtap='wxloginModal' data-statu="open"/>
+	 	<view class="wxlogin-text">
+	 		<view style="margin-left: auto; text-align: right;color: #999"> 点击登录,即表示已阅读并同意 </view>
+       <view bindtap="chargeAgree" style="margin-right: auto; text-align: left;color: #1c77d5">《用伞服务条款》</view>
+		</view>
+	</view>
+      <!-- <button class='btn-login' type="primary" bindtap='wxloginModal' data-statu="open">微信授权登录</button> -->
+	<!--mask-->
+	<view class="drawer-screen" bindtap="wxloginModal" data-statu="close" wx:if="{{showModalStatus}}"></view>
+	<!--使用animation属性指定需要执行的动画-->
+	<view animation="{{animationData}}" class="drawer-box" wx:if="{{showModalStatus}}">
+		 <!--wxloginModal content-->
+  </view>
+</view> 

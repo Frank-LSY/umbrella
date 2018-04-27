@@ -1,0 +1,13 @@
+@import '../../../style/weui.wxss';
+page{
+  font-family: SimHei;
+}
+.weui-media-box__title{
+  margin:0px 0px 10rpx 40rpx;
+  padding-top:30rpx;
+  text-align: center;
+}
+.weui-media-box__desc{
+  margin:0rpx 0rpx 30rpx 40rpx;
+
+}

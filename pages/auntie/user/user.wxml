@@ -1,0 +1,76 @@
+<view class="page">
+    <view class="page__hd" style="background-color:#00A82F">
+        <navigator url="../userinfo/userinfo">
+            <view class="page__title" style="text-align:center">
+                <view style="width: 84px; height: 84px;border-radius:50%;background-color:#80d497;display: inline-block;">
+                    <image src="{{head}}" style="width: 80px; height: 80px;border-radius:50%;margin:2px;"></image>
+                </view>
+            </view>
+            <view class="page__desc" style="text-align:center;color:#fff">{{true_name}}</view>
+        </navigator>
+    </view>
+    <view class="page__bd">
+        <view class="weui-cells weui-cells_after-title">
+            <navigator url="../umbrellaDetail/umbrellaDetail" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+                <view class="weui-cell__hd">
+                    <image src="../../../images/ico_umbrella.png" style="margin-right: 5px;vertical-align: middle;width:20px; height: 20px;"></image>
+                </view>
+                <view class="weui-cell__bd">伞点信息</view>
+                <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+            </navigator>
+        </view>
+
+
+        <view class="weui-cells weui-cells_after-title" wx:if="{{is_edit==false}}">
+            <navigator url="../modifyInfo/modifyInfo" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+                <view class="weui-cell__hd">
+                    <image src="../../../images/ico_modify.png" style="margin-right: 5px;vertical-align: middle;width:20px; height: 20px;"></image>
+                </view>
+                <view class="weui-cell__bd">修改个人信息</view>
+                <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+            </navigator>
+        </view>
+
+    
+        <view class="weui-cells weui-cells_after-title"  wx:if="{{is_edit==true}}">
+            <view  class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+                <view class="weui-cell__hd">
+                    <image src="../../../images/ico_modify.png" style="margin-right: 5px;vertical-align: middle;width:20px; height: 20px;"></image>
+                </view>
+                <view class="weui-cell__bd">修改信息正在审核</view>
+                
+            </view>
+        </view>
+
+
+        <view class="weui-cells weui-cells_after-title">
+            <navigator url="../wage/wage" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+                <view class="weui-cell__hd">
+                    <image src="../../../images/ico_wage.png" style="margin-right: 5px;vertical-align: middle;width:20px; height: 20px;"></image>
+                </view>
+                <view class="weui-cell__bd">工资</view> 
+                <view class="weui-cell__ft weui-cell__ft_in-access" style="color:#fe4e00;padding-top:5rpx;"></view>
+            </navigator>
+        </view>
+        <view class="weui-cells weui-cells_after-title">
+            <navigator url="../repair/repair" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+                <view class="weui-cell__hd">
+                    <image src="../../../images/ico_repair.png" style="margin-right: 5px;vertical-align: middle;width:20px; height: 20px;"></image>
+                </view>
+                <view class="weui-cell__bd">报修</view>
+                <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+            </navigator>
+        </view>
+        
+          <view class="weui-cells weui-cells_after-title">
+            <view  class="weui-cell weui-cell_access" hover-class="weui-cell_active" bindtap="exit">
+                <view class="weui-cell__hd" >
+                    <image src="../../../images/ico_about.png" style="margin-right: 5px;vertical-align: middle;width:20px; height: 20px;"></image>
+                </view>
+                <view class="weui-cell__bd">去往小荷伞</view>
+                <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+            </view>
+        </view>
+
+    </view>
+</view>

@@ -1,0 +1,18 @@
+<view class="page">
+    <view class="page__bd">
+        <view class="weui-panel">
+            <view class="weui-cells weui-cells_after-title">
+                <view class="weui-panel__hd">伞点位置[{{umbrellaLocation}}]</view>
+            </view>
+            <view class="weui-panel__bd">
+                <view class="weui-media-box weui-media-box_text" style="text-align:center;color:#00a82f;">
+                    <view class="weui-media-box__title weui-media-box__title_in-text">小荷伞实时数量</view>
+                    <view class="umbrellaNum">
+                        <text>{{umbrellaNum}}</text>
+                        <text>把</text>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

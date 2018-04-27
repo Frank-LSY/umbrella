@@ -1,0 +1,9 @@
+
+
+
+<view class="weui-media-box__bd weui-media-box__bd_in-appmsg" style="border-radius:10rpx;background-color:#fff;border:1rpx solid #e5e5e5;margin:24rpx;"  wx:for="{{noticeRecord}}" wx:key="*this">
+  <view class="weui-media-box__title" style="font-size:40rpx;color:green">{{item.title}}</view>
+  <view class="weui-media-box__desc" style="font-size:26rpx;">{{item.datetime}}</view>
+  <view class="weui-media-box__desc" style="font-size:30rpx;color:#000;padding-bottom:20rpx;">{{item.content}}</view>
+</view>
+

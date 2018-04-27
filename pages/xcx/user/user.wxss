@@ -1,0 +1,66 @@
+@import '../../../style/weui.wxss';
+.home{
+  padding:0px;
+  position:relative;
+  font-family: SimHei;
+  background-color:#f2f2f2;
+  font-size:30rpx;
+  /*font-family: -apple-system-font,Helvetica Neue,Helvetica,sans-serif;*/
+}
+.icon{
+ background-color: #00a82f;
+ color: #FFFFFF;
+ width: 100%;
+ height: 320rpx;
+ text-align:center;
+ padding-top:40rpx;
+}
+.user-avatar{
+  width: 158rpx;
+  height: 158rpx;
+  margin-top:80rpx;
+  margin-bottom:10rpx;
+  /*margin: 80rpx 20rpx;*/
+  border-radius: 50%;
+
+}
+.nickname{
+  margin: 10rpx 20rpx;
+}
+.image_left{
+float:left;
+margin-top:30rpx;
+width: 40rpx;
+height: 40rpx;
+}
+.image_right{
+  float:right;
+  margin-top:30rpx;
+  width: 18rpx;
+  height: 25rpx;
+
+}
+
+
+.weui-cell__ft_in-access:after {
+content:" ";
+display:inline-block;
+height:8px;
+width:8px;
+border-width:1px 1px 0 0;
+border-color:#333;
+}
+.weui-cells:before {
+border-top:none;
+}
+.weui-cells::after {
+bottom:0;
+border-bottom:1rpx solid #e5e5e5;
+
+}
+.weui-cell__bd {
+-webkit-box-flex:1;
+-webkit-flex:1;
+flex:1;
+font-size:32rpx;
+}

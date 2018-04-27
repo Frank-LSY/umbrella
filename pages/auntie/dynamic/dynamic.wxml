@@ -1,0 +1,10 @@
+
+
+<view class="weui-media-box__bd weui-media-box__bd_in-appmsg" style="text-align:center;border-radius:10rpx;background-color:#fff;border:1rpx solid #e5e5e5;margin:24rpx;" >
+  <view class="weui-media-box__title" style="font-size:40rpx;color:green;">动态还伞码</view>
+ 	<image  src="{{qr_url}}" style="height:200px;width:200px;"/>
+    <button bindtap="getQr">手动更新</button>
+      <view class="text_info" > 当还伞码有误时，请尝试手动更新 </view>
+</view>
+
+

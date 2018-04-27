@@ -1,0 +1,88 @@
+<view class="page__bd">
+        <view class="weui-tab">
+            <view class="weui-navbar">
+                <block wx:for="{{tabs}}" wx:key="*this">
+                    <view id="{{index}}" class="weui-navbar__item {{activeIndex == index ? 'weui-bar__item_on' : ''}}" bindtap="tabClick">
+                        <view class="weui-navbar__title">{{item}}</view>
+                    </view>
+                </block>
+                <view class="weui-navbar__slider" style="left: {{sliderLeft}}px; transform: translateX({{sliderOffset}}px); -webkit-transform: translateX({{sliderOffset}}px);"></view>
+            </view>
+      
+            <view class="weui-tab__panel">
+            <!-- 未完成的 -->
+                <view class="weui-tab__content mylist" hidden="{{activeIndex != 0}}" style="height:{{activeIndex==0?containerHeight1:containerHeight2}}rpx">
+                
+              <view wx:for-items="{{unfinishedOrder}}" wx:key="*this"  >
+                 <view class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active" style="margin-top:20rpx;">
+                    <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
+                        <view class="weui-media-box__title">
+                          <view class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+                            <view class="weui-cell__hd"><image class='oclock' src="../../../images/oclock.png" /></view>
+                            <view class="weui-cell__bd weui-cell_primary"  style="text-align:left;">
+                                <view>{{item.datetime_start}}</view>
+                            </view>
+                            <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+                          </view>
+                        </view>
+                         <view class="weui-media-box__desc" style="margin-bottom:20rpx;margin-left:7rpx;">已使用:
+                            <text style="font-size:30rpx;">{{item.time.hour}}小时{{item.time.minute}}分</text>
+                        </view>
+            </view>
+              <!--上面这一坨 -->
+                    <!-- 扫一扫 -->
+                    <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
+                        <image data-use-record="{{item.id}}" bindtap='binScan' class="weui-media-box__thumb" src="../../../images/scan.png"/>
+                    </view>
+                </view>
+
+              <!--赞助商-->
+             <view class="weui-cell weui-media-box_appmsg" wx:if="{{item.sponsor.length!=0}}" style="color:#00a82f;text-align:center;" data-sp="{{item.sponsor.id}}"  bindtap="toSponsor"> 
+                  <view style="margin-right:30rpx;">
+                    <image style="width:80rpx;height:80rpx;border-radius:50%;margin-top:10rpx" src="{{uploads_url}}/{{item.sponsor.logo}}"></image>
+                  </view>
+                 <view class="">
+                    <text>{{item.sponsor.name}},{{item.sponsor.description}}</text>
+                </view>
+            </view> 
+              <!--赞助商结束-->
+                </view >
+
+                <view class="item" type="default" loading="{{loading}}" disabled="{{disabled}}" bindtap="setLoading1" style="font-size:30rpx;color:#000">
+                   {{loadText1}}
+                </view>
+            </view>
+        <!-- 已完成的 -->
+           <view class="weui-tab__content mylist" hidden="{{activeIndex != 1}}" style="height:{{activeIndex==0?containerHeight1:containerHeight2}}rpx">
+                
+                 <view wx:for-items="{{finishedOrder}}" wx:key="*this" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active" style="margin-top:20rpx;">
+                    <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
+                        <view class="weui-media-box__title">
+                          <view class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+                            <view class="weui-cell__hd"><image class='oclock' src="../../../images/oclock.png" /></view>
+                            <view class="weui-cell__bd weui-cell_primary" style="text-align:left;">
+                                <view>{{item.datetime_start}}</view>
+                            </view>
+                            <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+                          </view>
+                        </view>
+                        <view class="weui-media-box__desc" style="margin-bottom:20rpx;margin-left:7rpx;">使用消费:
+                            <text style="font-size:30rpx;">￥{{item.fee}}</text>
+                            <view class="" wx:if="{{item.remark ==1}}">
+                             备注：扣除押金
+                            </view>
+                        </view>   
+                    </view>
+                    <view class="" wx:if="{{item.state ==2}}">
+                      待确认
+                    </view>
+                  </view>
+
+    <view class="item" type="default" size="default" loading="{{loading}}" disabled="{{disabled}}" bindtap="setLoading2" style="font-size:30rpx;color:#000">
+            {{loadText2}}
+              </view>
+            </view>
+          </view>
+        </view>
+    </view>
+

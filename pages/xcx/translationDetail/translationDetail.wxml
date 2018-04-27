@@ -1,0 +1,20 @@
+<!--translationDetail.wxml-->
+ <view class="homepage container" style="height:{{200*finishedOrder.length}}rpx">
+        <view class="item grid" wx:for-items="{{finishedOrder}}" wx:key="*this">
+
+      <view class="item_left col-3">
+        <view class="item_left_up grid">
+          <image class="item_left_up1 up" src="../../../images/oclock.png"></image>
+          <view class="item_left_up2 up title">{{item.datetime}}</view>
+     
+       </view>
+        <view class="item_left_down grid text">
+          <view>{{item.consumptionType}}</view>
+          <text class="key_text">￥{{item.fee}}</text>
+        </view>
+      </view>
+        <view class="item_right col-1">
+      
+         </view>
+      </view>
+      </view>

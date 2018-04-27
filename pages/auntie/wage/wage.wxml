@@ -1,0 +1,14 @@
+<view class="page">
+    <view class="page__bd">
+        <view class="weui-cells weui-cells_after-title">
+            <view class="weui-cell">
+                <view class="weui-cell__bd">日期</view>
+                <view class="weui-cell__ft">工资（元）</view>
+            </view>
+            <view class="weui-cell wage-list" wx:for="{{wageDetail}}"  wx:key="*this">
+                <view class="weui-cell__bd">{{item.year}}年{{item.month}}月</view>
+                <view class="weui-cell__ft">{{item.fee}}元({{item.state_info}})</view>
+            </view>
+        </view>
+    </view>
+</view>

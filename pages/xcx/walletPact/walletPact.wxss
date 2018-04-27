@@ -1,0 +1,32 @@
+.container{
+  margin:20rpx;
+  min-height:800rpx;
+  border-radius:10rpx;
+  background-color:#ffffff;
+  font-family: SimHei;
+}
+
+
+
+.recharged{
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    background-color: #F4F6F7;
+    font-size: 30rpx;
+}
+.title{
+    text-align: center;
+    padding:30rpx 0 30rpx 0;
+    /*font-weight: bold;*/
+    font-size: 34rpx;
+    line-height:50rpx;
+    border-bottom: 1rpx solid #e5e5e5;
+
+}
+.content {
+    margin: 30rpx 20rpx 0 20rpx;
+    text-indent: 60rpx;
+    line-height:50rpx;
+
+}

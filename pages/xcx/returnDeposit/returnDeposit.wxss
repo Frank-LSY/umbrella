@@ -1,0 +1,108 @@
+
+.endride{
+	/*padding:30rpx 0;*/
+  flex:2;
+  margin-top:40rpx;
+
+}
+.modal_view{
+	text-align: center;
+	width: 100%;
+	flex: 6;
+}
+.modal_img{
+  width:100rpx;
+  height:100rpx;
+  margin:auto;
+}
+
+.charge1{
+  /*border-bottom:5rpx solid red;*/
+  /*width:240rpx;*/
+  text-align:center;
+  margin:auto;
+  padding-bottom:20rpx;
+
+}
+
+.warn{
+  line-height:42px;
+  font-family: SimHei;
+  margin-bottom:20rpx;
+  color:#fff;
+  background-color:#00a82f;
+  width:80%;
+  height:80rpx;
+  text-align: center;
+}
+
+
+
+
+.modal{
+  height:200rpx;
+  border-radius: 10rpx;
+}
+
+
+.depositView{
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    background-color: #F4F6F7
+}
+.depositBlock{
+    background-color: #FFFFFF;
+    margin-top: 30rpx;
+}
+.currentMoney{
+    display: flex;
+    flex-flow: row;
+    line-height: 80rpx;
+    margin-left: 40rpx;
+    width: 710rpx;
+    height: 100rpx;
+    /*border-bottom:2rpx solid #D7E0E4;*/
+    font-size: 38rpx;
+    font-weight: body
+}
+.varietyMoney{
+    height: 400rpx;
+}
+.chioce{
+    position: absolute;
+    width: 315rpx;
+    height: 80rpx;
+    border-radius: 15rpx;
+    border: 1rpx solid #CFCFCF;
+    line-height: 80rpx
+}
+.depositBtn{
+    margin-top: 40rpx;
+    margin-bottom:100rpx;
+    width: 670rpx;
+    height: 80rpx;
+    margin-left: 40rpx;
+    background-color: #00a82f;
+    color: #FFFFFF;
+    line-height: 80rpx;
+    border-radius: 20rpx;
+    font-size:30rpx;
+}
+.text1{
+    /*position: absolute;*/
+    display: flex;
+    flex-flow: row;
+    font-size: 30rpx; 
+    bottom: 110rpx;
+    color: #7C7D7F;
+    width: 100%;
+}
+.text2{
+    color: #7C7D7F;
+    /*position: absolute;*/
+    width: 100%;
+    text-align: center;
+    font-size: 30rpx;
+    bottom: 60rpx;
+}

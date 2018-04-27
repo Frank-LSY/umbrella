@@ -1,0 +1,35 @@
+@import '../../../style/weui.wxss';
+page{
+  font-family: SimHei;
+}
+.weui-media-box__title{
+  margin:0px 0px 10rpx 40rpx;
+  padding-top:30rpx;
+  text-align: center;
+}
+.weui-media-box__desc{
+  margin:0rpx 0rpx 30rpx 40rpx;
+  
+}
+.text_info{
+    display: flex;
+    flex-flow: row;
+    font-size: 30rpx;
+    text-align: center;
+    bottom: 110rpx;
+    color: #7C7D7F;
+    width: 100%;
+    margin-top: 20rpx;
+    margin-left: 120rpx;
+}
+button{
+    margin-top: 80rpx;
+    margin-left: 50rpx;
+    width: 600rpx;
+    height: 80rpx;
+    line-height: 80rpx;
+    border-radius: 20rpx;
+    color: #FFFFFF;
+    background-color: #00a82f;
+    font-family: SimHei;
+}

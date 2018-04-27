@@ -1,0 +1,96 @@
+
+page{
+  font-family: SimHei;
+  background-color: #f2f2f2;
+}
+.placeholder{
+    padding: 0 10px;
+    text-align: center;
+    background-color: #EBEBEB;
+    height: 80rpx;
+    line-height: 2.3em;
+    color: #cfcfcf;
+    width:270rpx;
+    border-radius:10rpx;
+}
+.weui-flex__item{
+  margin:20rpx 30rpx 20rpx 30rpx;
+}
+.page__bd_spacing {
+  padding-left:0rpx;
+  padding-right:0rpx;
+
+}
+
+
+
+
+
+.endride{
+  flex:2;
+  margin-top:40rpx;
+
+}
+.modal_view{
+	text-align: center;
+	width: 100%;
+	flex: 6;
+}
+.modal_img{
+  width:100rpx;
+  height:100rpx;
+  margin:auto;
+}
+
+.charge1{
+  width:240rpx;
+  text-align:center;
+  margin:auto;
+  padding-bottom:20rpx;
+
+}
+
+.warn{
+  line-height:42px;
+  font-family: SimHei;
+  margin-bottom:20rpx;
+  color:#fff;
+  background-color:#00a82f;
+  width:80%;
+  height:80rpx;
+  text-align: center;
+}
+
+
+.modal{
+  height:200rpx;
+  border-radius: 10rpx;
+}
+.depositBtn{
+    margin-top: 40rpx;
+    width: 670rpx;
+    height: 80rpx;
+    margin-left: 40rpx;
+    background-color: #00a82f;
+    color: #FFFFFF;
+    line-height: 80rpx;
+    border-radius: 20rpx;
+    font-size:30rpx;
+}
+.text1{
+    display: flex;
+    flex-flow: row;
+    font-size: 25rpx;
+    bottom: 110rpx;
+    color: #7C7D7F;
+    width: 100%;
+    margin-top: 50rpx;
+}
+.text2{
+    color: #7C7D7F;
+    width: 100%;
+    text-align: center;
+    font-size: 25rpx;
+    bottom: 60rpx;
+    margin-top: 10rpx;
+}

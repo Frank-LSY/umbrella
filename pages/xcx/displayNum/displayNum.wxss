@@ -1,0 +1,69 @@
+@import '../../../style/weui.wxss';
+page{
+  font-family: SimHei;
+  background-color: #fafafa;
+}
+.list{
+  margin:20rpx;
+  border-radius: 40rpx;
+  background-color: #fff;
+  /* border-top:1px solid #e5e5e5 */
+}
+.weui-cell__bd{
+  /*text-align: center;*/
+}
+.weui-cells{
+  margin: 20rpx 0;
+/*border-radius:40rpx;*/
+}
+.item{
+  color: #333;
+}
+
+.page__bd{
+    padding-bottom: 0;
+}
+.weui-cells:before {
+    border-top: none
+}
+.weui-cell__hd{
+	margin-right:10rpx;
+}
+
+
+
+
+
+
+
+
+.table {
+  border: 0px solid darkgray;
+}
+.tr {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  height: 2.4rem;
+  align-items: center;
+}
+.td {
+    width:40%;
+    justify-content: center;
+    text-align: center;
+}
+.bg-w{
+  background: #fff;
+}
+.bg-g{
+  background:#fff ;
+}
+.th {
+  width: 60%;
+  justify-content: center;
+  background: #FF7F00;
+  color: #fff;
+  display: flex;
+  height: 2.4rem;
+  align-items: center;
+}

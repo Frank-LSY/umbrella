@@ -1,0 +1,83 @@
+<view class="homepage">
+<view class="swiper-tab">  
+    <view class="swiper-tab-list {{currentTab==0 ? 'on' : ''}}" data-current="0" bindtap="swichNav">借伞记录</view>  
+    <view class="swiper-tab-list {{currentTab==1 ? 'on' : ''}}" data-current="1" bindtap="swichNav">还伞记录</view>  
+</view>  
+<swiper current="{{currentTab}}" class="swiper-box" duration="300" style="height:{{winHeight - 31}}px" bindchange="bindChange">  
+<!-- 借伞记录 -->  
+<swiper-item>  
+  <view class="container">
+  <view class="item grid" wx:for-items="{{borrowList}}">
+     <view class="item-left col-4">
+        <view class="item-left-up title">
+           <image class="item-left-up1 up" src="{{item.feed_source_img}}"></image>
+           <view class="item-left-up2 up">{{item.user}}/{{item.feed_source_name}}</view>
+        </view>
+        <view class="item-left-down">
+               <image class="item-left-down1 down" src="../../../images/recent.png"></image>
+               <view class="item-left-down2 down title">{{item.time}}</view>
+        </view>
+      </view>
+      <view class="item-right col-1">
+      <text class="item-right1" style="color:#ff6600">
+      {{item.status}}
+      </text>
+       </view>
+  </view>
+</view>
+
+    </swiper-item>  
+
+  
+    <!-- 还伞记录 -->  
+    <swiper-item>  
+  <view class="container">
+  <view class="item grid" wx:for-items="{{returnList}}">
+     <view class="item-left col-4">
+        <view class="item-left-up">
+           <image class="item-left-up1 up" src="{{item.feed_source_img}}"></image>
+           <view class="item-left-up2 up title">{{item.user}}/{{item.feed_source_name}}</view>
+        </view>
+        <view class="item-left-down title" style="margin-left:45rpx" >借伞时间：{{item.time1}}</view>
+        <view class="item-left-down title" style="margin-left:45rpx">还伞时间：{{item.time2}}</view>
+    </view>
+      <view class="item-right col-1">
+      <text class="item-right1" style="color:#ff6600">
+      {{item.status}}
+      </text>
+       </view>
+  </view>
+</view>
+</swiper-item>  
+</swiper> 
+
+            <!--<swiper-item>  
+      <view>
+<view class="container">
+  <block wx:for-items="{{returnList}}">
+     <view class="feed-item">
+            <view class="feed-source">
+                
+                    <view class="avatar">
+                        <image src="{{item.feed_source_img}}"></image>
+                    </view>
+                    <text>{{item.feed_source_name}}        {{item.status}}</text>
+                
+               </view>
+               <view class="feed-content">
+               
+                <view class="answer-body">
+                    <view bindtap="bindItemTap">
+                    <view>    <text class="answer-txt" >借伞时间：{{item.time1}}</text></view>
+                        <view><text class="answer-txt" >还伞时间：{{item.time2}}</text></view>
+                    </view>
+                    </view>
+                    </view>
+                    </view>
+  </block>
+</view>
+      </view>  
+    </swiper-item>  
+    
+</swiper> -->
+</view>  

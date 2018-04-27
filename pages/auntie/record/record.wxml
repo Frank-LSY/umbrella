@@ -1,0 +1,66 @@
+<view class="page__bd">
+        <view class="weui-tab">
+            <view class="weui-navbar">
+                <block wx:for="{{tabs}}" wx:key="key">
+                    <view id="{{index}}" class="weui-navbar__item {{activeIndex == index ? 'weui-bar__item_on' : ''}}" bindtap="tabClick">
+                        <view class="weui-navbar__title">{{item}}</view>
+                    </view>
+                </block>
+                <view class="weui-navbar__slider" style="left: {{sliderLeft}}px; transform: translateX({{sliderOffset}}px); -webkit-transform: translateX({{sliderOffset}}px);"></view>
+            </view>
+            <view class="weui-tab__panel">
+            <!-- 借伞记录 -->
+              <view class="weui-tab__content mylist" hidden="{{activeIndex != 0}}" style="height:{{activeIndex==0?containerHeight1:containerHeight2}}rpx">
+                <view wx:for-items="{{borrow_record}}" wx:key="key"  >
+                  <view class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active" style="margin-top:20rpx;">
+                    <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
+                      <view class="weui-media-box__title">
+                        <view class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+                          <view class="weui-cell__hd"><image class='oclock' src="{{item.head}}" /></view>
+                          <view class="weui-cell__bd weui-cell_primary"  style="text-align:left;">
+                              <view>{{item.nickname}}</view>
+                          </view>
+                          <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+                        </view>
+                      </view>
+                      <view class="weui-media-box__desc" style="margin-bottom:20rpx;margin-left:7rpx;">借伞时间:
+                          <text style="font-size:30rpx;">{{item.datetime_start}}</text>
+                      </view>
+                    </view>
+                    <!--上面这一坨 -->
+                  </view>
+                </view >
+                <view class="item" type="default" loading="{{loading}}" disabled="{{disabled}}" bindtap="setLoading1" style="font-size:30rpx;color:#000">
+                  {{loadText1}}
+                </view>
+              </view>
+            <!-- 还伞记录 -->
+            <view class="weui-tab__content mylist" hidden="{{activeIndex != 1}}" style="height:{{activeIndex==0?containerHeight1:containerHeight2}}rpx">
+              <view wx:for-items="{{back_record}}" wx:key="key" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active" style="margin-top:20rpx;">
+                <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
+                  <view class="weui-media-box__title">
+                    <view class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+                      <view class="weui-cell__hd"><image class='oclock' src="{{item.head}}" /></view>
+                        <view class="weui-cell__bd weui-cell_primary" style="text-align:left;">
+                            <view>{{item.nickname}}</view>
+                        </view>
+                      <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+                    </view>
+                  </view>
+                  <view class="weui-media-box__desc" style="margin-bottom:20rpx;margin-left:7rpx;">还伞时间:
+                      <text style="font-size:30rpx;">{{item.datetime_end}}</text>
+                  </view>
+                </view>
+                <view class="arrow"  wx:if="{{item.state==2}}">
+                    <!-- <image data-use-record="{{item.id}}" class="weui-media-box__thumb" src="../../../images/arrow.png" /> -->
+                     <image data-backRecord="{{item.id}}" bindtap="checkU" class="weui-media-box__thumb" src="../../../images/ensure.png" /> 
+                </view>
+              </view>
+            <view class="item" type="default" size="default" loading="{{loading}}" disabled="{{disabled}}" bindtap="setLoading2" style="font-size:30rpx;color:#000">
+            {{loadText2}}
+            </view>
+            </view>
+          </view>
+        </view>
+    </view>
+

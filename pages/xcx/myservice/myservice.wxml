@@ -1,0 +1,16 @@
+
+<view class="homepage">
+  <view url="" class="weui-media-box weui-media-box_appmsg page_top" hover-class="weui-cell_active">                 
+      <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
+        <view class="weui-media-box__title">常见问题</view>
+        <view class="weui-flex">
+          <view class="weui-flex__item" wx:for="{{QandA}}" wx:key="key">
+              <button class="QandABtn" style="" id="{{item.id}}" bindtap="QandADetail">{{item.content}}
+              {{item.name}}</button>
+          </view>
+        </view> 
+      </view>
+  </view> 
+</view >
+
+
