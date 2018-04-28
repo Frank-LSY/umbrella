@@ -1,6 +1,6 @@
 var md5 = require("../../systemcall/MD5.js")
-var checkNetWork = require("../../systemcall/checkNetWork.js")
-var config = require('../../config');
+var init = require("../../systemcall/init.js")
+var config = require('../../router.js');
 var app = getApp()
 var inputValue = ''
 
@@ -18,12 +18,6 @@ Page({
   onLoad: function (options) {
     // 生命周期函数--监听页面加载
 
-  },
-  /*更换手机号*/
-  changeTel: function () {
-    wx.navigateTo({
-      url: '../Register/Register'
-    })
   },
   /*打开模态框*/
   showModal: function () {
@@ -64,36 +58,23 @@ Page({
     var that = this;
     var login_state = wx.getStorageSync('login_state')
 
-    if (login_state == 2) {//快速登陆
+    if (login_state == 2) {
+      //快速登陆
       wx.request({
         url: config.user.loginUrl,
         data: {},
-        method: 'POST', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
+        method: 'POST',
         header: {
           'authenticate': wx.getStorageSync('client_sign'), //唯一标识
         },
         success: function (res) {
-          // success
-
-          wx.setStorageSync('login_state', 3)//已登陆标识
-          wx.setStorageSync('switch_login', 0) //默认登陆标识
-          wx.redirectTo({
-            url: '../index/index'
-          })
-
         },
         fail: function (res) {
-          // fail
-          console.log(res)
-          // that.failMessage()
         },
 
       })
-    } else if (login_state == 1) {//注册
-      wx.redirectTo({
-        url: '../Register/Register'
-      })
-    } else if (login_state == 3)//登陆用户 问题 不应该到者
+    } else if (login_state == 1) {
+    } else if (login_state == 3)
     {
       wx.redirectTo({
         url: '../index/index'

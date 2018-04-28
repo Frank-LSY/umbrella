@@ -25,8 +25,8 @@ Page(Object.assign({}, Zan.NoticeBar, Zan.Dialog, {
     // 使用 wx.createMapContext 获取 map 上下文
     this.mapCtx = wx.createMapContext('map');
     this.moveToLocation();
-
   },
+
   // 得到地图中心的位置
   getCenterLocation: function () {
     this.mapCtx.getCenterLocation({
@@ -57,8 +57,16 @@ Page(Object.assign({}, Zan.NoticeBar, Zan.Dialog, {
     })
   },
 addmoney:function(){
-    this.setData({
-      beshortofmoney:false
+    wx.requestPayment({
+      timeStamp: '',
+      nonceStr: '',
+      package: '',
+      signType: '',
+      paySign: '',
+      success:function(res){
+        wx.setStorageSync("restmoney", 5);
+      },fail:function(res){
+      }
     })
 }
 ,
@@ -75,6 +83,7 @@ addmoney:function(){
   },
   regionchange(e) { console.log(e.type) },
   markertap(e) { console.log(e.markerId) },
+  
   // 对地图的上的controls点击事件绑定
   controltap(e) {
     console.log(e.controlId);
