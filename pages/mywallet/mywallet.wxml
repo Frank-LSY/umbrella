@@ -1,0 +1,36 @@
+<!--pages/newpage/mywallet/mywallet.wxml-->
+<view class='mycontainer'>
+  <view class="zan-cell zan-cell--access">
+    <view class="zan-cell__bd">
+      <view class="zan-cell__text">荷伞周卡</view>
+      <view class="zan-cell__desc">限时优惠进行中~</view>
+    </view>
+    <view class="zan-cell__ft">
+      <button class='zan-btn'>购买</button>
+    </view>
+  </view>
+
+  <view class="zan-cell zan-cell--access">
+    <view class="zan-cell__bd">
+      <view class="zan-cell__text">余额</view>
+      <view class="zan-cell__desc">{{restmoney}}元</view>
+    </view>
+    <view class="zan-cell__ft">
+      <button class='zan-btn'>充值</button>
+    </view>
+  </view>
+
+  <view class="zan-cell zan-cell--access" data-url="../myredbag/myredbag">
+    <view class="zan-cell__bd">
+      <view class="zan-cell__text">我的红包</view>
+      <view class="zan-cell__desc"></view>
+    </view>
+    <view class="zan-cell__ft">{{redbag}}元</view>
+
+  </view>
+
+  <view class="zan-cell zan-cell--access" bindtap='detail' data-url='../ourservice/ourservice'>
+    <view class="zan-cell__bd">微信免密</view>
+    <view class="zan-cell__ft">未开通</view>
+  </view>
+</view>

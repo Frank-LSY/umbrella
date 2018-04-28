@@ -1,36 +1,15 @@
 {
   "pages": [
-    "pages/xcx/index/index",
-    "pages/xcx/wxlogin/wxlogin",
-    "pages/xcx/service/service",
-    "pages/xcx/user/user",
-    "pages/xcx/usageLog/usageLog",
-    "pages/xcx/history/history",
-    "pages/xcx/Register/Register",
-    "pages/xcx/explain/explain",
-    "pages/xcx/wallet/wallet",
-    "pages/xcx/redbag/redbag",
-    "pages/xcx/walletPact/walletPact",
-    "pages/xcx/deposit/deposit",
-    "pages/xcx/depositPact/depositPact",
-    "pages/xcx/returnDeposit/returnDeposit",
-    "pages/xcx/displayNum/displayNum",
-    "pages/xcx/cost/cost",
-    "pages/xcx/ponder/ponder",
-    "pages/xcx/translationDetail/translationDetail",
-    "pages/xcx/sponsor/sponsor",
-    "pages/xcx/myservice/myservice",
-    "pages/xcx/guide/guide",
-    "pages/auntie/wxlogin/wxlogin",
-    "pages/auntie/index/index",
-    "pages/auntie/dynamic/dynamic",
-    "pages/auntie/user/user",
-    "pages/auntie/userinfo/userinfo",
-    "pages/auntie/repair/repair",
-    "pages/auntie/record/record",
-    "pages/auntie/umbrellaDetail/umbrellaDetail",
-    "pages/auntie/wage/wage",
-    "pages/auntie/modifyInfo/modifyInfo"
+    "pages/index/index",
+    "pages/login/login",
+    "pages/service/service",
+    "pages/user/user",
+    "pages/Register/Register",
+    "pages/explain/explain",
+    "pages/mywallet/mywallet",
+    "pages/myredbag/myredbag",
+    "pages/userecord/userecord",
+    "pages/repaire/repaire"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -38,36 +17,6 @@
     "navigationBarBackgroundColor": "#00a82f",
     "navigationBarTextStyle": "white",
     "enablePullDownRefresh": false
-  },
-  "tabBar": {
-    "selectedColor": "#00A82F",
-    "backgroundColor": "#fff",
-    "list": [
-      {
-        "pagePath": "pages/auntie/index/index",
-        "text": "首页",
-        "iconPath": "images/ico_home.png",
-        "selectedIconPath": "images/ico_home_active.png"
-      },
-      {
-        "pagePath": "pages/auntie/record/record",
-        "text": "记录",
-        "iconPath": "images/ico_record.png",
-        "selectedIconPath": "images/ico_record_active.png"
-      },
-      {
-        "pagePath": "pages/auntie/dynamic/dynamic",
-        "text": "还伞",
-        "iconPath": "images/qrode02.png",
-        "selectedIconPath": "images/qrode01.png"
-      },
-      {
-        "pagePath": "pages/auntie/user/user",
-        "text": "我的",
-        "iconPath": "images/ico_user.png",
-        "selectedIconPath": "images/ico_user_active.png"
-      }
-    ]
   },
   "networkTimeout": {
     "request": 10000,

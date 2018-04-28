@@ -1,0 +1,24 @@
+<!--pages/newpage/repaire/repaire.wxml-->
+<view wx:if="{{using}}" class='using'>
+  <view>
+    一把伞正在使用中！
+  </view>
+  <view class="zan-row" style='margin-top:50rpx;'>
+    <view class="zan-col zan-col-10" style='float:left'>
+      <button class='{{repaire?classclick:classunclick}}' id='repaire' catchtap='click'>报修</button>
+    </view>
+    <view class="zan-col zan-col-10" style='float:right'>
+      <button class='{{losing?classclick:classunclick}}' id='losing' catchtap='click'>报失</button>
+    </view>
+  </view>
+  <view class="zan-panel-title">情况说明：</view>
+  <view class="zan-panel">
+    <textarea></textarea>
+  </view>
+  <button class='zan-btn--warn' catchtap=''>确定</button>
+</view>
+
+
+<view wx:else class='nousing'>
+  暂无雨伞正在使用！
+</view>

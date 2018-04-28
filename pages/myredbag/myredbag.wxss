@@ -1,0 +1,28 @@
+/* pages/newpage/myredbag/myredbag.wxss */
+.mycontainer{
+  padding-left: 50rpx;
+  padding-top: 50rpx;
+}
+.mycontainer,.mycontainer view{
+   background: gray
+}
+.zan-panel-title{
+    font:italic arial,sans-serif;
+    font-size: 40rpx;
+    color: black;
+    padding: 0;
+    margin: 0;
+  }
+  .zan-panel{
+    color: red;
+    font-size:40rpx; 
+  }
+  .number{
+    color: red;
+    font-size: 80rpx;
+    display: inline;
+  }
+  .detail{
+    color: gainsboro;
+    font-size: 30rpx;
+  }

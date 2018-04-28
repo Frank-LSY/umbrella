@@ -1,0 +1,25 @@
+<!--pages/newpage/userecord/userecord.wxml-->
+<import src="../../../dist/tab/index.wxml" />
+
+<view class="container">
+  <view class="doc-title zan-hairline--bottom">使用记录</view>
+
+  <view style="margin: 20px 0">
+    <template
+      is="zan-tab"
+      data="{{ ...chosen, componentId: 'chosen' }}"></template>
+  </view>
+
+  <view class="container">
+    <view>华中师范大学九号楼
+      <view>
+        借出时间：{{borrowtime}}
+      </view>
+      <view>
+        已借出：{{usedtime}}
+      </view>
+    </view>
+  </view>
+
+</view>
+

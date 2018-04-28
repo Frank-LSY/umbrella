@@ -1,0 +1,4 @@
+<template name="zan-toptips">
+  <view class="zan-toptips {{ zanTopTips.show ? 'zan-toptips--show' : '' }}" bindtap='paycash'>{{ zanTopTips.content }}  
+  </view>
+</template>

@@ -1,0 +1,5 @@
+<view class="homepage">
+    <view class="explain-img">
+            <image src="../../images/explain.jpg"></image>
+    </view>
+</view>

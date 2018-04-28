@@ -1,0 +1,15 @@
+<view class="homepage">
+	<view>
+		<image src="../../image/login_bg.png" class="login-bg"/>
+    <button open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber" bindtap='wxloginModal' class="btn-wxlogin">
+     <image src="../../image/btn_wxlogin.png" class="btn-wxlogin"  data-statu="open"/>
+		</button>
+	 	<view class="wxlogin-text">
+	 		<view style="margin-left: auto; text-align: right;color: #999"> 点击登录,即表示已阅读并同意 </view>
+       <view bindtap="chargeAgree" style="margin-right: auto; text-align: left;color: #1c77d5">《用伞服务条款》</view>
+		</view>
+	</view>
+	<view class="drawer-screen" bindtap="wxloginModal" data-statu="close" wx:if="{{showModalStatus}}"></view>
+	<view animation="{{animationData}}" class="drawer-box" wx:if="{{showModalStatus}}">
+  </view>
+</view> 

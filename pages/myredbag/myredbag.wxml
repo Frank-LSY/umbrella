@@ -1,0 +1,8 @@
+<!--pages/newpage/myredbag/myredbag.wxml-->
+<view class="mycontainer">
+  <view class="zan-panel-title">我的红包</view>
+  <view class="zan-panel zan-panel--without-border">
+    <view class='number'>{{number}}</view><view style='display:inline'>元</view>
+  </view>
+  <view class='detail'>您的红包在借伞时会自动使用！</view>
+</view>
