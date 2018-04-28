@@ -33,6 +33,7 @@ Page({
   },
   //获取用户手机号
   getPhoneNumber: function (e) {
+    console.log(e);
     console.log(e.detail.errMsg)
     console.log(e.detail.iv)
     console.log(e.detail.encryptedData)

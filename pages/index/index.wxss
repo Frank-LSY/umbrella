@@ -11,21 +11,23 @@ cover-view {
 }
 
 .crop-box-parent {
-  background: orange;
+  background: oldlace;
   width: 100%;
   position: absolute;
   height: 80rpx;
 }
 
 .button {
-  margin-top: 15rpx;
+  margin-top: 17rpx;
   margin-right: 50rpx;
-  border: solid sandybrown;
+  border: solid snow;
   float: right;
+  font-size: 30rpx;
 }
 
 .information {
   float: left;
-  margin-top: 15rpx;
+  margin-top: 17rpx;
   margin-left: 50rpx;
+  font-size: 32rpx;
 }

@@ -13,8 +13,8 @@ Page(Object.assign({}, Zan.NoticeBar, Zan.Dialog, {
     markers: Data.markers,
     polyline: Data.polyline,
     controls: Data.controls,
-    imformation:["您需要冲押金！","您需要充余额！"],
-    beshortofmoney:true
+    imformation:"您需要充值押金或余额才能借伞！",
+    needmoney:wx.getStorageSync("needmoney")
   },
   onLoad: function () {
     that = this;
@@ -64,7 +64,7 @@ addmoney:function(){
       signType: '',
       paySign: '',
       success:function(res){
-        wx.setStorageSync("restmoney", 5);
+        wx.setStorageSync("needmoney", 0);
       },fail:function(res){
       }
     })

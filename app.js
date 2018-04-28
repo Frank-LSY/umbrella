@@ -1,6 +1,7 @@
 //配置文件
 var config = require('./router.js');
 var init=require('./systemcall/init.js');
+var check=require('./systemcall/check.js')
 App({
   getUserInfo: function (cb) {
     var that = this;
