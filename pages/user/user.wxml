@@ -1,6 +1,6 @@
 <!-- 用户中心 -->
 
-<import src="../../../dist/dialog/index.wxml" />
+<import src="../../dist/dialog/index.wxml" />
 
 <view class='indexpage'>
 
@@ -9,25 +9,25 @@
   </view>
 
   <view class="zan-cell zan-cell--access" bindtap='detail' data-url='../userecord/userecord'>
-    <image src='../../image/record.png'></image>
+    <image src='../../images/record.png'></image>
     <view class="zan-cell__bd">使用记录</view>
     <view class="zan-cell__ft"></view>
   </view>
 
   <view class="zan-cell zan-cell--access" bindtap='detail' data-url='../mywallet/mywallet'>
-    <image src='../../image/wallet.png'></image>
+    <image src='../../images/wallet.png'></image>
     <view class="zan-cell__bd">我的钱包</view>
     <view class="zan-cell__ft"></view>
   </view>
 
   <view class="zan-cell zan-cell--access" bindtap='detail' data-url='../myredbag/myredbag'>
-    <image src='../../image/redbag.png'></image>
+    <image src='../../images/redbag.png'></image>
     <view class="zan-cell__bd">我的红包</view>
     <view class="zan-cell__ft"></view>
   </view>
 
   <view class="zan-cell zan-cell--access" bindtap='detail' data-url='../ourservice/ourservice'>
-    <image src='../../image/connect.png'></image>
+    <image src='../../images/connect.png'></image>
     <view class="zan-cell__bd">我的客服</view>
     <view class="zan-cell__ft"></view>
   </view>

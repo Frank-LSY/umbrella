@@ -1,6 +1,7 @@
 // pages/newpage/user/user.js
 
 var app=getApp();
+
 Page({
   onLaunch: function () {
     wx.login({

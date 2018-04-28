@@ -1,5 +1,5 @@
-var md5 = require("../../utils/MD5.js")
-var checkNetWork = require("../../utils/checkNetWork.js")
+var md5 = require("../../systemcall/MD5.js")
+var checkNetWork = require("../../systemcall/checkNetWork.js")
 var config = require('../../config');
 var app = getApp()
 var inputValue = ''
