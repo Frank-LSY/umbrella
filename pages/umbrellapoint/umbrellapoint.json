@@ -1,6 +1,9 @@
 {
-"usingComponents": {
-  "zan-cell": "./dist/cell/index",
-  "zan-cell-group": "./dist/cell-group/index"
-}
+  "navigationBarTitleText": "伞点分布",
+  "usingComponents": {
+    "zan-cell": "../../dist/cell/index",
+    "zan-icon": "../../dist/icon/index",
+    "zan-panel": "../../dist/panel/index",
+    "zan-cell-group": "../../dist/cell-group/index"
+  }
 }

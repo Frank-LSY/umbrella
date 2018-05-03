@@ -8,8 +8,8 @@ Page({
    */
   data: {
     using:!app.globalData.using,
-    classunclick:'zan-btn',
-    classclick:'zan-btn--primary',
+    classunclick:'',
+    classclick:'primary',
     losing:false,
     repaire:true,
   },

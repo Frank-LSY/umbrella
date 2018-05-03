@@ -5,7 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-  
+    umbrellapoint: [{ point: "华中师范大学九号楼", number: 10 }, { point: "华中师范大学九号楼", number: 10 }, { point: "华中师范大学九号楼", number: 10 }, { point: "华中师范大学九号楼", number: 10 }]
   },
 
   /**
