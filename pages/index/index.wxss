@@ -1,0 +1,33 @@
+/* pages/newpage/index/index.wxss*/
+
+map {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+}
+
+cover-view {
+  display: inline;
+}
+
+.crop-box-parent {
+  background: oldlace;
+  width: 100%;
+  position: absolute;
+  height: 80rpx;
+}
+
+.button {
+  margin-top: 17rpx;
+  margin-right: 50rpx;
+  border: solid snow;
+  float: right;
+  font-size: 30rpx;
+}
+
+.information {
+  float: left;
+  margin-top: 17rpx;
+  margin-left: 50rpx;
+  font-size: 32rpx;
+}

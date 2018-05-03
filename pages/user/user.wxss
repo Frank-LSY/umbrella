@@ -1,0 +1,19 @@
+/* pages/newpage/user/user.wxss */
+ image{
+  width: 200rpx;  
+  height: 200rpx;  
+  margin: 35rpx;  
+  border-radius: 50%;
+} 
+.zan-cell image{
+  margin:0;
+  padding: 10rpx;
+  width: 60rpx;
+  height: 60rpx;
+}
+.zan-cell__bd{
+  margin-left: 10rpx;
+}
+.content{
+  text-align: center;
+}

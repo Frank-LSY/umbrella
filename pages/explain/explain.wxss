@@ -1,0 +1,9 @@
+.explain-img{
+  width:750rpx;
+  height:1534rpx;
+
+}
+.explain-img image{
+  width:750rpx;
+  height:1534rpx;
+}

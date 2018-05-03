@@ -1,0 +1,7 @@
+.zan-noticebar {
+  color: #f60;
+  font-size: 18rpx;
+  line-height: 2.5;
+  height: 120rpx;
+  background-color: #fff7cc;
+}

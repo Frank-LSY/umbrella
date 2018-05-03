@@ -1,0 +1,8 @@
+/* pages/newpage/repaire/repaire.wxss */
+.using,.nousing{
+  margin-top:30rpx;
+  margin-left: 30rpx;
+  margin-right: 30rpx; 
+}
+.zan-col{
+}
