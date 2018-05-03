@@ -9,7 +9,8 @@
     "pages/mywallet/mywallet",
     "pages/myredbag/myredbag",
     "pages/userecord/userecord",
-    "pages/repaire/repaire"
+    "pages/repaire/repaire",
+    "pages/umbrellapoint/umbrellapoint"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -23,5 +24,9 @@
     "connectSocket": 10000,
     "uploadFile": 10000,
     "downloadFile": 10000
+  },
+  "usingComponents": {
+    "zan-cell": "./dist/cell/index",
+    "zan-cell-group": "./dist/cell-group/index"
   }
 }

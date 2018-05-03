@@ -2,6 +2,8 @@
 const Zan = require('../../dist/index');
 //数据模块
 var Data = require('../../data/index.js');
+
+var all=require('../../data/all.js');
 var that = null;
 var app = getApp();
 
@@ -89,7 +91,7 @@ addmoney:function(){
     console.log(e.controlId);
     this.click(e.controlId);
     // 点击了用户
-    if (e.controlId>1)
+    if (e.controlId>=1)
       wx.navigateTo({
         url: Data.pages[e.controlId],
       })
@@ -97,12 +99,20 @@ addmoney:function(){
 
   // 显示弹窗
   showDialog: function () {
-    this.initZanNoticeBarScroll('static1');
-
+    console.log("已点击");
+    console.log(that.data.controls)
+    app.globalData.CurrentStatus=all.Statuses.Unusing;
+    let newcontrols=that.data.controls;
+    newcontrols[4].iconPath=app.globalData.CurrentStatus.src;
+    console.log(newcontrols);
+    that.setData({
+      controls:newcontrols
+    })
     this.showZanDialog(Data.Dialogs[0]).then(({ type }) => {
       // 对点击的按钮进行判断
+      
       switch (type) {
-        case 'cash':
+        case 'back':
           console.log('=== dialog ===', 'type: cash');
           break;
         case 'get':

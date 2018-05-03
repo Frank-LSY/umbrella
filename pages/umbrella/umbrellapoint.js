@@ -1,17 +1,11 @@
-// pages/newpage/repaire/repaire.js
-var app = getApp();
-
+// pages/umbrella/umbrellapoint.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    using:!app.globalData.using,
-    classunclick:'zan-btn',
-    classclick:'zan-btn--primary',
-    losing:false,
-    repaire:true,
+  
   },
 
   /**
@@ -67,13 +61,6 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-  },
-
-  // 点击了报修或者报失按钮
-  click:function(e){
-      this.setData({
-        losing:this.data['losing']^true,
-        repaire:this.data['repaire']^true
-      })
-    }
+  
+  }
 })
