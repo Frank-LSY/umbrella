@@ -1,7 +1,8 @@
+var app = getApp();
+
 //存放时刻需要检查的调用
 var router=require("../router.js");
 //判断当前网络
-
 wx.getNetworkType({
   success: function (res) {
     console.log(res);
@@ -11,7 +12,7 @@ wx.getNetworkType({
       })
   }
 });
-
+//请求我的钱包，余额
 wx.request({
   url: router.user.my_wallet,
   method: 'GET',
@@ -25,7 +26,7 @@ wx.request({
   }
 });
 
-
+//请求我的押金
 wx.request({
   url: router.user.query_deposit,
   method: 'GET',
@@ -33,7 +34,7 @@ wx.request({
   responseType: 'text',
   success: function (res) {
     console.log(res);
-    wx.setStorageSync("needmoney", 30);
+    wx.setStorageSync("needmoney", 35);
   }, fail: function (res) {
     console.log(res);
   }

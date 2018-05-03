@@ -5,8 +5,8 @@
 <view class='mycontainer' wx:for="{{umbrellapoint}}" wx:key="index" wx:for-item="point">
 
   <zan-cell-group>
-    <zan-cell title="{{point.point}}" value="{{point.number}}"></zan-cell>
-    <zan-cell label="感谢华中师范大学的大力支持！"></zan-cell>
+    <zan-cell title="{{point.location}}" value="{{point.number}}"></zan-cell>
+    <zan-cell label="{{point.sponsor.description}}"></zan-cell>
   </zan-cell-group>
 
 </view>

@@ -27,6 +27,8 @@ Page({
   },
   /*关闭模态框*/
   closeModal: function () {
+    app.golobalData.CurrentStatus = all.Statuses.Unusing;
+    console.log("登陆完成，未借伞");
     this.setData({
       showModalStatus: false
     });
@@ -49,7 +51,10 @@ Page({
         title: '提示',
         showCancel: false,
         content: '同意授权',
-        success: function (res) { }
+        success: function (res) { 
+          app.golobalData.CurrentStatus=all.Statuses.Unusing;
+          console.log("登陆完成，未借伞");
+        }
       })
     }
   },
@@ -69,6 +74,8 @@ Page({
           'authenticate': wx.getStorageSync('client_sign'), //唯一标识
         },
         success: function (res) {
+          app.golobalData.CurrentStatus = all.Statuses.Unusing;
+          console.log("登陆完成，未借伞");
         },
         fail: function (res) {
         },

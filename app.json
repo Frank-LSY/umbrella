@@ -10,7 +10,8 @@
     "pages/myredbag/myredbag",
     "pages/userecord/userecord",
     "pages/repaire/repaire",
-    "pages/umbrellapoint/umbrellapoint"
+    "pages/umbrellapoint/umbrellapoint",
+    "pages/sponsor/sponsor"
   ],
   "window": {
     "backgroundTextStyle": "light",
