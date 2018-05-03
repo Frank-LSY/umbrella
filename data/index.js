@@ -70,6 +70,7 @@ module.exports = {
     {
       title: '领红包啦！',
       content: '您有一个红包未领！',
+      selector:'#zan-base-dialog',
       showCancel: true,
       buttons: [{
         text: '返回', color: 'red', type: 'back'

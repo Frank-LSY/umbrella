@@ -15,4 +15,4 @@
 
 
 <!-- 多功能模态框 -->
-<template is="zan-dialog" data="{{ zanDialog }}"></template>
+<zan-dialog id="zan-base-dialog"></zan-dialog>

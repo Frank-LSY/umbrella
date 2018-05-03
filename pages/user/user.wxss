@@ -5,7 +5,7 @@
   margin: 35rpx;  
   border-radius: 50%;
 } 
-.zan-cell image{
+zan-cell image{
   margin:0;
   padding: 10rpx;
   width: 60rpx;

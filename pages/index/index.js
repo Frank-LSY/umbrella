@@ -7,7 +7,7 @@ var all=require('../../data/all.js');
 var that = null;
 var app = getApp();
 
-Page(Object.assign({}, Zan.NoticeBar, Zan.Dialog, {
+Page({
   // 页面数据
   data: {
     longitude: null,
@@ -108,26 +108,9 @@ addmoney:function(){
     that.setData({
       controls:newcontrols
     })
-    this.showZanDialog(Data.Dialogs[0]).then(({ type }) => {
-      // 对点击的按钮进行判断
-      
-      switch (type) {
-        case 'back':
-          console.log('=== dialog ===', 'type: cash');
-          break;
-        case 'get':
-          console.log('=== dialog ===', 'type: get');
-          //点击领取红包，得到红包，跳转到我的红包
-          wx.navigateTo({
-            url: '../myredbag/myredbag',
-          })
-          break;
-        default:
-          break;
-      }
-    }).catch(() => {
-      console.log('=== dialog ===', 'type: cancel');
+    Zan.Dialog(Data.Dialogs[0]).then(() => {
+      console.log('=== dialog ===', 'type: confirm');
     });
+
   }
 })
-)

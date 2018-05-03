@@ -1,1 +1,5 @@
-{}
+{
+  "usingComponents": {
+    "zan-tab": "../../dist/tab/index"
+  }
+}

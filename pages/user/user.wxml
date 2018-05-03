@@ -1,35 +1,32 @@
 <!-- 用户中心 -->
 
-<import src="../../dist/dialog/index.wxml" />
-
 <view class='indexpage'>
-
   <view class='content'>
     <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover" mode='aspectFit'></image>
   </view>
 
-  <view class="zan-cell zan-cell--access" bindtap='detail' data-url='../userecord/userecord'>
-    <image src='../../images/record.png'></image>
-    <view class="zan-cell__bd">使用记录</view>
-    <view class="zan-cell__ft"></view>
-  </view>
+  <zan-cell-group>
+    <zan-cell title="使用记录"  is-link="true" url="../userecord/userecord">
+      <image slot="icon" src='../../images/record.png'></image>
+    </zan-cell>
+  </zan-cell-group>
 
-  <view class="zan-cell zan-cell--access" bindtap='detail' data-url='../mywallet/mywallet'>
-    <image src='../../images/wallet.png'></image>
-    <view class="zan-cell__bd">我的钱包</view>
-    <view class="zan-cell__ft"></view>
-  </view>
+  <zan-cell-group>
+    <zan-cell title="我的钱包" is-link="true" url='../mywallet/mywallet'>
+      <image slot="icon" src='../../images/wallet.png'></image>
+    </zan-cell>
+  </zan-cell-group>
 
-  <view class="zan-cell zan-cell--access" bindtap='detail' data-url='../myredbag/myredbag'>
-    <image src='../../images/redbag.png'></image>
-    <view class="zan-cell__bd">我的红包</view>
-    <view class="zan-cell__ft"></view>
-  </view>
+  <zan-cell-group>
+    <zan-cell title="我的红包" is-link="true" url='../myredbag/myredbag'>
+      <image slot="icon" src='../../images/redbag.png'></image>
+    </zan-cell>
+  </zan-cell-group>
 
-  <view class="zan-cell zan-cell--access" bindtap='detail' data-url='../ourservice/ourservice'>
-    <image src='../../images/connect.png'></image>
-    <view class="zan-cell__bd">我的客服</view>
-    <view class="zan-cell__ft"></view>
-  </view>
+  <zan-cell-group>
+    <zan-cell title="我的客服" is-link="true" url='../ourservice/ourservice'>
+      <image slot="icon" src='../../images/connect.png'></image>
+    </zan-cell>
+  </zan-cell-group>
 
 </view>
