@@ -1,32 +1,29 @@
 // pages/newpage/userecord/userecord.js
-const { Tab, extend } = require('../../dist/index');
-
-Page(extend({}, Tab, {
+var router=require('../../router.js');
+var that=null;
+Page({
   data: {
-    chosen: {
-      list: [{
-        id: 'using',
-        title: '使用中'
-      }, {
-        id: 'used',
-        title: '已完成'
-      }],
-      selectedId: 'using'
-    }
-  },
-
-  handleZanTabChange(e) {
-    var componentId = e.componentId;
-    var selectedId = e.selectedId;
-
-    this.setData({
-      [`${componentId}.selectedId`]: selectedId
-    });
+    records:null
   },
     onLoad: function () {
-      this.setData({
-        borrowtime: new Date().getTime(),
-        usedtime:3
-      });
+      that=this;
+      wx.request({
+        url: router.user.get_useRecord,
+        method: 'GET',
+        dataType: 'json',
+        responseType: 'text',
+        success: function (res) {
+          console.log(res);
+          that.setData({
+            records:[{
+              position: '八号楼',
+              borrowtime: "2018-05-03:19:22",
+              usedtime: '90分钟'
+            }]
+          })
+        },
+        fail: function (res) { },
+        complete: function (res) { },
+      })
     } 
-}));
+});

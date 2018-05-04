@@ -1,0 +1,12 @@
+<zan-cell-group>
+  <zan-cell title="伞点" value="数量"></zan-cell>
+</zan-cell-group>
+
+<view class='mycontainer' wx:for="{{umbrellapoint}}" wx:key="index" wx:for-item="point">
+
+  <zan-cell-group>
+    <zan-cell title="{{point.location}}" value="{{point.number}}"  bindtap="toSponsor" data-id="{{point.id}}"></zan-cell>
+    <zan-cell label="{{point.sponsor.description}}"></zan-cell>
+  </zan-cell-group>
+
+</view>
