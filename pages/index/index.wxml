@@ -8,6 +8,13 @@
       <cover-view class='information'>{{imformation}}</cover-view>
       <cover-view class='button' catchtap='addmoney'>充值</cover-view>
     </cover-view>
+
+    <cover-view class='umbrellastatus'>
+      <cover-view class='borrowtime'>开始时间：{{starttime.hour}}:{{starttime.minute}}:{{starttime.second}}</cover-view>
+      <cover-view class='totaltime'>使用时间：{{usedtime.hour}}:{{usedtime.minute}}:{{usedtime.second}}</cover-view>
+    </cover-view>
+
+
   </map>
 
 </view>

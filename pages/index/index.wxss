@@ -31,3 +31,21 @@ cover-view {
   margin-left: 50rpx;
   font-size: 32rpx;
 }
+
+.umbrellastatus{
+  height:30%;
+  width: 80%;
+  background: black;
+  margin-top:60%;
+  position: absolute; 
+  opacity: 0.3;
+  border-radius: 50rpx;
+  margin-left: 10%;
+  text-align: center;
+}
+
+.borrowtime ,.totaltime{
+  color: white;
+  display: block;
+  bottom: 0;
+}

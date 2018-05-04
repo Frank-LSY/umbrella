@@ -17,7 +17,9 @@ Page({
     polyline: Data.polyline,    //路线
     controls: Data.controls,    //地图上的控点
     imformation: "您需要充值押金或余额才能借伞！", //提示信息
-    needmoney: wx.getStorageSync("needmoney")
+    needmoney: wx.getStorageSync("needmoney"),
+    usedtime:{hour:"00",minute:"15",second:"20"},
+    starttime: { hour: "09", minute: "12", second: "20"}
   },
   onLoad: function () {
     that = this;

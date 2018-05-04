@@ -40,6 +40,10 @@ Page({
         case 'confirm':
         // 扣除押金，解除正在使用的状态，返回主界面，重新加载小程序
           that.reducemoney();
+          app.globalData.using=false;
+          that.setData({
+            using:app.globalData.using
+          })
           break; 
         default:
           break;
