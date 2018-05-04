@@ -23,7 +23,7 @@ Component({
     error: Boolean,
     maxlength: {
       type: Number,
-      value: 140
+      value: -1
     }
   },
 

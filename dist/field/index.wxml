@@ -6,7 +6,6 @@
   </view>
   <textarea
     wx:if="{{ type === 'textarea' }}"
-    auto-height
     name="{{ name || '' }}"
     disabled="{{ disabled }}"
     focus="{{ focus }}"
@@ -17,7 +16,9 @@
     placeholder-class="zan-field__placeholder"
     bindinput="handleZanFieldChange"
     bindfocus="handleZanFieldFocus"
-    bindblur="handleZanFieldBlur">
+    bindblur="handleZanFieldBlur"
+    style='height:250rpx;'
+    >
   </textarea>
   <input
     wx:else

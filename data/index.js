@@ -69,7 +69,7 @@ module.exports = {
     // 领红包弹窗的内容
     {
       title: '领红包啦！',
-      content: '您有一个红包未领！',
+      message: '您有一个红包未领！',
       selector:'#zan-base-dialog',
       showCancel: true,
       buttons: [{

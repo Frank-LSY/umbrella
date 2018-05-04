@@ -1,8 +1,11 @@
 {
-    "navigationBarTitleText": "报修报失",
-    "usingComponents": {
-      "zan-button": "../../dist/btn/index",
-      "zan-row": "../../dist/row/index",
-      "zan-col": "../../dist/col/index"
-    }
+  "navigationBarTitleText": "报修报失",
+  "usingComponents": {
+    "zan-button": "../../dist/btn/index",
+    "zan-row": "../../dist/row/index",
+    "zan-col": "../../dist/col/index",
+    "zan-field": "../../dist/field/index",
+    "zan-panel": "../../dist/panel/index",
+    "zan-dialog": "../../dist/dialog/index"
+  }
 }

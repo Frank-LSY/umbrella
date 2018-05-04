@@ -3,18 +3,28 @@
   <view>
     一把伞正在使用中！
   </view>
+  <!-- 报修报失按钮 -->
+  <zan-row row-class="custom-zan-row">
+    <zan-col col="8" col-class="custom-zan-col">
+      <zan-button type="{{repaire?classclick:classunclick}}" catchtap='click'> 报修</zan-button>
+    </zan-col>
+    <zan-col col="8" offset="8" col-class="custom-zan-col">
+      <zan-button type="{{losing?classclick:classunclick}}" catchtap='click'>报失</zan-button>
+    </zan-col>
+  </zan-row>
 
-<zan-row row-class="custom-zan-row">
-  <zan-col col="8" col-class="custom-zan-col">
-    <zan-button type="{{repaire?classclick:classunclick}}" catchtap='click'> 报修</zan-button>
-  </zan-col>
-  <zan-col col="8" offset="8" col-class="custom-zan-col">
-    <zan-button type="{{losing?classclick:classunclick}}" catchtap='click'>报失</zan-button>
-  </zan-col>
-</zan-row>
+  <!-- 信息文本框 -->
+  <zan-panel title='原因详细说明'>
+      <zan-field placeholder="请在这里输入" focus="true" type="textarea"
+      mode="normal" rows="15" style="height:500rpx;">
+      </zan-field>
+  </zan-panel>
 
+  <zan-button type='primary' catchtap='showDialog'>确认</zan-button>
 </view>
-
 <view wx:else class='nousing'>
   暂无雨伞正在使用！
 </view>
+
+
+<zan-dialog id="zan-base-dialog"></zan-dialog>
