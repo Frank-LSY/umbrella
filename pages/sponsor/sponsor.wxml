@@ -1,9 +1,9 @@
-<view class="home homepage page">
-    <view url="" class="weui-media-box weui-media-box_appmsg page_top" hover-class="weui-cell_active">
+<view class="container">
+    <view hover-class="weui-cell_active">
         <view class="weui-media-box__hd weui-media-box__hd_in-appmsg" >
-            <image class="weui-media-box__thumb" src="{{sp_logo}}" style="width:120rpx;height:120rpx;"/>
+            <image class="" src="{{sp_logo}}" style=""/>
         </view>
-        <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">
+        <view class=" ">
             <view class="weui-media-box__title">
                 <text style="font-size:30rpx;font-family: SimHei;">{{sponsor.name}}</text>
             </view>
@@ -12,6 +12,9 @@
             </view>
         </view>
     </view>
+
+
+
     <!--商家详细信息  -->
     <view class="business-info">
         <view class="weui-media-box__bd weui-media-box__bd_in-appmsg" style="background-color:#fff;margin:24rpx;font-size:35rpx;border-top:1px dashed #999;padding-top:30rpx;">

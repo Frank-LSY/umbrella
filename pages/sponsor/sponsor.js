@@ -1,4 +1,4 @@
-var config = require('../../../config');
+var router = require('../../router.js');
 Page({
   data: {
     sponsor: [],//赞助商
@@ -10,7 +10,7 @@ Page({
     var that = this;
     /********yh_start_返回用户信息*******/
     wx.request({
-      url: config.user.sponsor,  //需要修改为红包服务wl
+      url: router.user.sponsor,  //需要修改为红包服务wl
       data: { 'sponsor': e.sponsor_id },
       method: 'POST',
       header: {
@@ -26,8 +26,8 @@ Page({
           that.setData({
             sponsor: content.sponsor,
             activity: content.activity,
-            ac_imag: config.uploads + "/" + content.activity.image,
-            sp_logo: config.uploads + "/" + content.sponsor.logo
+            ac_imag: router.uploads + "/" + content.activity.image,
+            sp_logo: router.uploads + "/" + content.sponsor.logo
 
           })
           wx.setNavigationBarTitle({

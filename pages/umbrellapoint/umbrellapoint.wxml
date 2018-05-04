@@ -5,7 +5,7 @@
 <view class='mycontainer' wx:for="{{umbrellapoint}}" wx:key="index" wx:for-item="point">
 
   <zan-cell-group>
-    <zan-cell title="{{point.location}}" value="{{point.number}}"></zan-cell>
+    <zan-cell title="{{point.location}}" value="{{point.number}}"  bindtap="toSponsor" data-id="{{point.id}}"></zan-cell>
     <zan-cell label="{{point.sponsor.description}}"></zan-cell>
   </zan-cell-group>
 

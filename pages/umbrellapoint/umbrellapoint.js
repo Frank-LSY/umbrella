@@ -32,6 +32,12 @@ Page({
       }
     });
   },
+  toSponsor: function (e) {
+    console.log(e);
+    wx.redirectTo({
+      url: '../sponsor/sponsor?sponsor_id=' + e.currentTarget.dataset.id
+    })
+  },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
