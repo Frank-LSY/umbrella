@@ -1,25 +1,17 @@
 <!--pages/newpage/userecord/userecord.wxml-->
-<import src="../../../dist/tab/index.wxml" />
 
 <view class="container">
   <view class="doc-title zan-hairline--bottom">使用记录</view>
 
-  <view style="margin: 20px 0">
-    <template
-      is="zan-tab"
-      data="{{ ...chosen, componentId: 'chosen' }}"></template>
-  </view>
-
-  <view class="container">
-    <view>华中师范大学九号楼
+  <view class="container" wx:for="{{records}}" wx:for-item="record" wx:key="index">
+    <view>{{record.position}}
       <view>
-        借出时间：{{borrowtime}}
+        借出时间：{{record.borrowtime}}
       </view>
       <view>
-        已借出：{{usedtime}}
+        已借出：{{record.usedtime}}
       </view>
     </view>
   </view>
 
 </view>
-

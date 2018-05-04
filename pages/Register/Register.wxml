@@ -1,2 +1,7 @@
-<!--pages/newpage/Register/Register.wxml-->
-<text>pages/newpage/Register/Register.wxml</text>
+<view class="login-bg"> 
+	  <image src="../../images/login_bg.png" class="login-bg"/> 
+    <button type="primary"bindtap="modalinput">获取验证码</button>   
+</view>  
+<modal hidden="{{flag}}" title="请输入验证码" confirm-text="提交" cancel-text="取消" bindcancel="cancel" bindconfirm="confirm">  
+    <input class='codeTf' bindinput='codeTfInput' maxlength="4" type="number" placeholder="输入验证码" focus='{{codeTfFocus}}'/>
+</modal>  

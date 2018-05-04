@@ -1,38 +1,48 @@
-const { extractComponentId } = require('../common/helper');
-
-module.exports = {
-  _handleZanFieldChange(event) {
-    const componentId = extractComponentId(event);
-    event.componentId = componentId;
-
-    
-
-    if (this.handleZanFieldChange) {
-      return this.handleZanFieldChange(event);
+Component({
+  properties: {
+    title: String,
+    name: String,
+    type: {
+      type: String,
+      value: 'input'
+    },
+    name: String,
+    value: String,
+    disabled: Boolean,
+    inputType: {
+      type: String,
+      value: 'text'
+    },
+    placeholder: String,
+    focus: Boolean,
+    mode: {
+      type: String,
+      value: 'normal'
+    },
+    right: Boolean,
+    error: Boolean,
+    maxlength: {
+      type: Number,
+      value: -1
     }
-
-    console.warn('页面缺少 handleZanFieldChange 回调函数');
   },
 
-  _handleZanFieldFocus(event) {
-    const componentId = extractComponentId(event);
-    event.componentId = componentId;
+  methods: {
+    handleZanFieldChange(event) {
+      
+      this.triggerEvent('change', event);
+    },
 
-    
+    handleZanFieldFocus(event) {
+      
 
-    if (this.handleZanFieldFocus) {
-      return this.handleZanFieldFocus(event);
-    }
-  },
+      this.triggerEvent('focus', event);
+    },
 
-  _handleZanFieldBlur(event) {
-    const componentId = extractComponentId(event);
-    event.componentId = componentId;
+    handleZanFieldBlur(event) {
+      
 
-    
-
-    if (this.handleZanFieldBlur) {
-      return this.handleZanFieldBlur(event);
+      this.triggerEvent('blur', event);
     }
   }
-};
+});
