@@ -145,6 +145,7 @@ Page({
     else if (e.controlId === 4 && app.globalData.CurrentStatus.status !== 0) {
       that.getscan();
     } 
+
   },
 
   // 显示弹窗

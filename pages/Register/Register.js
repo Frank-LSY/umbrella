@@ -30,6 +30,7 @@ Page({
 
     //校验码
     SALT: "AIRBIKESALT",
+
   
   },
 
@@ -207,6 +208,5 @@ Page({
         'registerParams.verification': ''
       })
     }
-  },
-
+  }
 })
