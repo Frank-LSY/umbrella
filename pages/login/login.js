@@ -51,14 +51,50 @@ Page({
         title: '提示',
         showCancel: false,
         content: '同意授权',
-        success: function (res) { 
-          app.golobalData.CurrentStatus=all.Statuses.Unusing;
+        success: function (res) {
+          app.golobalData.CurrentStatus = all.Statuses.Unusing;
           console.log("登陆完成，未借伞");
+          wx.login({
+            success: function (r) {
+              if (r.code) {
+                var code = r.code;//登录凭证 
+                if (code) {
+                  //2、调用获取用户信息接口 
+                  wx.getUserInfo({
+                    success: function (res) {
+                      //发起网络请求 
+                      wx.request({
+                        url: '',
+                        header: {
+                          "content-type": "application/x-www-form-urlencoded"
+                        },
+                        method: "POST",
+                        data: {
+                          encryptedData: res.encryptedData,
+                          iv: res.iv,
+                          code: code
+                        },
+                        success: function (result) {
+                          console.log(result)
+                        }
+                      })
+                    },
+                    fail: function () {
+                      console.log('获取用户信息失败')
+                    }
+                  })
+                } else {
+                  console.log('获取用户登录态失败！' + r.errMsg)
+                }
+
+              } else {
+              }
+            }
+          }) 
         }
       })
     }
   },
-
 
   wxloginModal: function (e) {
     var that = this;
@@ -82,8 +118,8 @@ Page({
 
       })
     } else if (login_state == 1) {
-    } else if (login_state == 3)
-    {
+    } else if (login_state == 3) {
+
       wx.redirectTo({
         url: '../index/index'
       })
@@ -99,6 +135,8 @@ Page({
               var content = res.data.data
               var statu = res.data.re_code
               console.log(statu);
+              statu=500;
+
               if (statu == 200 || statu == 501) //表示已登陆
               {
                 if (statu == 501) {//注册用户，但缓存过期,需要重新登陆
@@ -198,6 +236,4 @@ Page({
       // });
     }
   },
-
-
 })
