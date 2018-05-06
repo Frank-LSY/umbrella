@@ -5,4 +5,3 @@
 <modal hidden="{{flag}}" title="请输入验证码" confirm-text="提交" cancel-text="取消" bindcancel="cancel" bindconfirm="confirm">  
     <input class='codeTf' bindinput='codeTfInput' maxlength="4" type="number" placeholder="输入验证码" focus='{{codeTfFocus}}'/>
 </modal>  
-

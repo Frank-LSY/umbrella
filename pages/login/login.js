@@ -96,6 +96,9 @@ Page({
     }
   },
 
+
+
+
   wxloginModal: function (e) {
     var that = this;
     var login_state = wx.getStorageSync('login_state')
@@ -119,7 +122,6 @@ Page({
       })
     } else if (login_state == 1) {
     } else if (login_state == 3) {
-
       wx.redirectTo({
         url: '../index/index'
       })
@@ -135,8 +137,6 @@ Page({
               var content = res.data.data
               var statu = res.data.re_code
               console.log(statu);
-              statu=500;
-
               if (statu == 200 || statu == 501) //表示已登陆
               {
                 if (statu == 501) {//注册用户，但缓存过期,需要重新登陆
@@ -236,4 +236,6 @@ Page({
       // });
     }
   },
+
+
 })
