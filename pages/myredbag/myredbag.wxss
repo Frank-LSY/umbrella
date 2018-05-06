@@ -2,6 +2,7 @@
 .mycontainer{
   padding-left: 50rpx;
   padding-top: 50rpx;
+  padding-bottom: 50rpx;
 }
 .mycontainer,.mycontainer view{
    background: gray;
