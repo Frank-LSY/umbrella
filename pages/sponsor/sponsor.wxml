@@ -1,50 +1,48 @@
 <view class="container">
-    <view hover-class="weui-cell_active">
-        <view class="weui-media-box__hd weui-media-box__hd_in-appmsg" >
-            <image class="" src="{{sp_logo}}" style=""/>
-        </view>
-        <view class=" ">
-            <view class="weui-media-box__title">
-                <text style="font-size:30rpx;font-family: SimHei;">{{sponsor.name}}</text>
-            </view>
-            <view class="weui-media-box__title">
-                <text style="font-size:30rpx;font-family: SimHei;">{{sponsor.description}}</text>
-            </view>
-        </view>
+  <view class='header'>
+
+    <image src="{{sp_logo}}" />
+
+    <view>
+      <view class='name'>
+        <text>{{sponsor.name}}</text>
+      </view>
+      <view class='description'>
+        <text>{{sponsor.description}}</text>
+      </view>
     </view>
 
+  </view>
 
 
-    <!--商家详细信息  -->
-    <view class="business-info">
-        <view class="weui-media-box__bd weui-media-box__bd_in-appmsg" style="background-color:#fff;margin:24rpx;font-size:35rpx;border-top:1px dashed #999;padding-top:30rpx;">
-            <view class="weui-media-box__desc" style="font-size:35rpx">电话：{{sponsor.mobile}}</view>
-            <view class="weui-media-box__desc" style="font-size:35rpx;">地址：{{sponsor.address}}</view>
-            <view class="weui-media-box__desc" style="font-size:35rpx">详情：{{sponsor.content}}</view>
+  <!--商家详细信息  -->
+  <view class='detail'>
+      <view>电话：{{sponsor.mobile}}</view>
+      <view>地址：{{sponsor.address}}</view>
+      <view>详情：{{sponsor.content}}</view>
+  </view>
+
+   <!-- 活动 
+  <view class='activity'>
+    <view>{{activity.title}}</view>
+    <view>2017-10-1</view>
+  </view> -->
+
+  <view class="slogan">
+    <view wx:if="{{activity !=0}}">
+      <view>
+        <view>口号：{{activity.slogan}}</view>
+      </view>
+      <view>
+        <view>
+          <image src="{{ac_image}}"></image>
         </view>
+        <text>{{activity.content}}</text>
+      </view>
     </view>
-    <!-- 活动 -->
-   <view class="weui-cells weui-cells_after-title redbag-content" style="text-align:center">
-          <view class="weui-cell__bd">{{activity.title}}</view>
-          <view class="weui-cell__bd" style="color:#999">2017-10-1</view>
-   </view>
-        
-    <view class="weui-cells weui-cells_after-title redbag-content" >
-        <view class="" wx:if="{{activity !=0}}">
-            <view class="">
-                <view class="weui-cell__bd" style="margin:25rpx;">口号：{{activity.slogan}}</view>
-            </view>
-            <view class="">
-                <view class="" style="text-align:center">
-                  <image src="{{ac_image}}" style="width:700rpx;"></image>
-                </view>
-                <text style="margin:25rpx;">{{activity.content}}</text>
-                
-            </view>
-        </view>
 
-        <view class="weui-cell redbag-content-title" wx:else>
-            <view class="weui-cell__bd">商家还没有活动</view>
-        </view>
+    <view wx:else>
+      <view>商家还没有活动</view>
     </view>
+  </view>
 </view>

@@ -1,1 +1,34 @@
 /* pages/sponsor/sponsor.wxss */
+
+.header image {
+  width: 350rpx;
+  height: 350rpx;
+}
+
+.header {
+  margin-top: 20rpx;
+  text-align: center;
+}
+
+.name, .description {
+  font-family: TimesNR, 'New Century Schoolbook', Georgia, 'New York', serif;
+  font-weight: bold;
+}
+
+.detail {
+  margin-left: 25rpx;
+  font-size: 30rpx;
+}
+
+.activity {
+  font-family: TimesNR, 'New Century Schoolbook', Georgia, 'New York', serif;
+  font-size: 25rpx;
+  text-align: center;
+}
+
+.slogan {
+  margin-top: 30rpx;
+  font-size: 35rpx;
+  margin-left: 28rpx;
+  margin-right: 28rpx;
+}
