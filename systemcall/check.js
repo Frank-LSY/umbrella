@@ -20,6 +20,8 @@ wx.request({
   responseType: 'text',
   success:function(res){
     console.log(res);
+    wx.setStorageSync("balance", 5);
+    wx.setStorageSync("redbag", 5);
     wx.setStorageSync("needmoney", 5);
   },fail:function(res){
     console.log(res);

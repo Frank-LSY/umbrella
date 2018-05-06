@@ -4,7 +4,7 @@
   padding-top: 50rpx;
 }
 .mycontainer,.mycontainer view{
-   background: gray
+   background: gray;
 }
 .zan-panel-title{
     font:italic arial,sans-serif;

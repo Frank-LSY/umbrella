@@ -56,9 +56,8 @@ Page({
   },
   //点击去充值
   addmoney: function () {
-
     // 充值记录
-    wx.request({ 
+    wx.request({
       url: router.user.paymentUrl,
       data: {
         rechargeNum: 30, //充值金额
