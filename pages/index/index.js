@@ -22,12 +22,14 @@ Page({
     needmoney: wx.getStorageSync("needmoney"),
     seconds: 0,
     time: '00:00:00',
+
     cost: 0,
     using: false
   },
   onLoad: function () {
     console.log(app.globalData.CurrentStatus)
     that = this;
+
     this.changeicon();    //查看当前状态改变底部的按钮图片
     if (wx.getStorageSync("redbag") !== 0) {
       this.showDialog();
@@ -115,6 +117,10 @@ Page({
       wx.navigateTo({
         url: Data.pages[e.controlId],
       })
+    // 跳转
+    else if (e.controlId === 4 && app.globalData.CurrentStatus.status !== 0) {
+      that.getscan();
+    } 
   },
 
   // 显示弹窗
@@ -139,7 +145,6 @@ Page({
   changeicon: function () {
     let newcontrols = that.data.controls;
     newcontrols[4].iconPath = app.globalData.CurrentStatus.src;
-    // console.log(newcontrols);
     that.setData({
       controls: newcontrols
     })
