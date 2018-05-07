@@ -2,9 +2,10 @@
 .mycontainer{
   padding-left: 50rpx;
   padding-top: 50rpx;
+  padding-bottom: 50rpx;
 }
 .mycontainer,.mycontainer view{
-   background: gray
+   background: gray;
 }
 .zan-panel-title{
     font:italic arial,sans-serif;

@@ -1,1 +1,10 @@
-{}
+{
+  "navigationBarTitleText": "我的钱包",
+  "usingComponents": {
+    "zan-cell": "../../dist/cell/index",
+    "zan-icon": "../../dist/icon/index",
+    "zan-panel": "../../dist/panel/index",
+    "zan-cell-group": "../../dist/cell-group/index",
+    "zan-button": "../../dist/btn/index"
+  }
+}

@@ -48,7 +48,7 @@ App({
       }, fail: function (res) {
         // console.log(res);
       }, complete(res) {
-        that.globalData.CurrentStatus = all.Statuses.Registered;
+        that.globalData.CurrentStatus = all.Statuses.Unregister;
       }
     })
   },
