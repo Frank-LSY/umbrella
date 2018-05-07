@@ -32,7 +32,6 @@ App({
     CashPledge: 0,  //押金
     using: false, //是否有伞正在使用
     phonenumber:12345678911,
-
   },
 
   // 假设已经注册
@@ -44,10 +43,10 @@ App({
       dataType: 'json',
       responseType: 'text',
       success: function (res) {
-        console.log("register");
-        console.log(res);
+        // console.log("register");
+        // console.log(res);
       }, fail: function (res) {
-        console.log(res);
+        // console.log(res);
       }, complete(res) {
         that.globalData.CurrentStatus = all.Statuses.Registered;
       }
