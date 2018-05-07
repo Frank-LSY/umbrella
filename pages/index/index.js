@@ -22,7 +22,7 @@ Page({
     seconds: 0,
     time: '00:00:00',
     cost: 0,
-    using:false
+    using: false
   },
   onLoad: function () {
     that = this;
@@ -54,26 +54,26 @@ Page({
 
       }
     });
-   // function settime(that) {
-   //   var second = that.data.second
-   //   that.setData({
+    // function settime(that) {
+    //   var second = that.data.second
+    //   that.setData({
     //    hour: (second / 3600),
-   //     mintue: (second - hour * 3600) / 60,
-     //   second: (second - hour * 3600 - mintue * 60)
+    //     mintue: (second - hour * 3600) / 60,
+    //   second: (second - hour * 3600 - mintue * 60)
     //  });
     //  return;
     //  var time = setTimeout(function () {
     //    that.setData({
     //      second: second + 1
-          
-     //   }); 
+
+    //   }); 
     //    console.log(second)
     //    countdown(that);
-   //   }
-     //   , 1000)
-  //  }
+    //   }
+    //   , 1000)
+    //  }
     this.changeicon();    //查看当前状态
-    console.log(wx.getStorageSync("needmoney"));.0
+    console.log(wx.getStorageSync("needmoney")); .0
   },
   onShow: function () {
   },
@@ -110,7 +110,7 @@ Page({
   addmoney: function () {
 
     // 充值记录
-    wx.request({ 
+    wx.request({
       url: router.user.paymentUrl,
       data: {
         rechargeNum: 30, //充值金额
@@ -187,7 +187,7 @@ Page({
   // 对地图的上的controls点击事件绑定
   controltap(e) {
     console.log(e.controlId);
-    this.click(e.controlId);    
+    this.click(e.controlId);
     // 扫码
     if (e.controlId === 4 && app.globalData.CurrentStatus.status !== 0) {
       that.getscan();
@@ -206,6 +206,7 @@ Page({
         case 'back':
           app.globalData.CurrentStatus = all.Statuses.Unusing;
           that.changeicon();
+
           break;
         default:
           break;
@@ -228,25 +229,25 @@ Page({
       seccess: function (res) {
       }, fail(res) {
       }, complete(res) {
-        if (app.globalData.CurrentStatus===all.Statuses.Using){
+        if (app.globalData.CurrentStatus === all.Statuses.Using) {
           app.globalData.CurrentStatus = all.Statuses.Unusing;
           that.changeicon();
-        }else{
+        } else {
           app.globalData.CurrentStatus = all.Statuses.Using;
           that.changeicon();
-        }  
+        }
         that.setusing();
       }
     })
   },
   setusing: function () {
-    if (app.globalData.CurrentStatus === all.Statuses.Using){
+    if (app.globalData.CurrentStatus === all.Statuses.Using) {
       that.setData({
-        using:true
+        using: true
       })
-    }else{
+    } else {
       that.setData({
-        using:false
+        using: false
       })
     }
   }
