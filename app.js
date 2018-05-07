@@ -44,10 +44,10 @@ App({
       dataType: 'json',
       responseType: 'text',
       success: function (res) {
-        console.log("register");
-        console.log(res);
+        // console.log("register");
+        // console.log(res);
       }, fail: function (res) {
-        console.log(res);
+        // console.log(res);
       }, complete(res) {
         that.globalData.CurrentStatus = all.Statuses.Registered;
       }

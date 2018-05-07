@@ -28,22 +28,22 @@ Page({
   onLoad: function () {
     that = this;
     this.changeicon();    //查看当前状态改变底部的按钮图片
-    if (wx.getStorageSync("redbag")!==0) {
-      this.showDialog();
-    }
   },
   onReady: function () {
     // 使用 wx.createMapContext 获取 map 上下文
     this.mapCtx = wx.createMapContext('map');
     this.getCenterLocation();
     this.moveToLocation();
+    if (wx.getStorageSync("redbag") !== 0) {
+      this.showDialog();
+    }
   },
   // 得到地图中心的位置
   getCenterLocation: function () {
     this.mapCtx.getCenterLocation({
       success: function (res) {
-        console.log(res.longitude)
-        console.log(res.latitude)
+        // console.log(res.longitude)
+        // console.log(res.latitude)
       }
     })
   },
@@ -121,7 +121,7 @@ Page({
   changeicon: function () {
     let newcontrols = that.data.controls;
     newcontrols[4].iconPath = app.globalData.CurrentStatus.src;
-    console.log(newcontrols);
+    // console.log(newcontrols);
     that.setData({
       controls: newcontrols
     })
