@@ -3,13 +3,13 @@
 <!--pages/newpage/index/index.wxml-->
 <import src="../../dist/dialog/index.wxml" />
 <view class='indexpage'>
-  <map id="map" longitude="{{longitude}}" latitude="{{latitude}}" scale="18" controls="{{controls}}" bindcontroltap="controltap" markers="{{markers}}" bindmarkertap="markertap" polyline="{{polyline}}" bindregionchange="regionchange" show-location bindtap='showDialog'>
+
+  <map id="map" longitude="{{longitude}}" latitude="{{latitude}}" scale="18" controls="{{controls}}" bindcontroltap="controltap" markers="{{markers}}" bindmarkertap="markertap" polyline="{{polyline}}" bindregionchange="regionchange" show-location>
     <cover-view class='crop-box-parent' wx:if="{{needmoney>0}}">
       <cover-view class='information'>{{imformation}}</cover-view>
       <cover-view class='button' catchtap='addmoney'>充值</cover-view>
     </cover-view>
-
-    <cover-view class='umbrellastatus'>
+    <cover-view class='umbrellastatus' wx:if="{{using}}">
       <cover-view class='borrowtime'>开始时间：{{times}}</cover-view>
       <cover-view class='totaltime'>使用时间：{{time}}</cover-view>
     </cover-view>

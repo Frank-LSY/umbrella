@@ -6,7 +6,7 @@ wx.request({
   dataType: 'json',
   responseType: 'text',
   success: function(res) {
-    console.log(res.data.data.markers);
+    // console.log(res.data.data.markers);
     wx.setStorageSync("umbrellapoint", res.data.data.markers);
   },
   fail: function(res) {},

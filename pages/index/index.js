@@ -4,6 +4,7 @@ const Zan = require('../../dist/index');
 var Data = require('../../data/index.js');
 //全局变量
 var all = require('../../data/all.js');
+var Function=require("../../systemcall/function.js");
 var time = require('../../systemcall/getTime.js')
 var router = require('../../router.js')
 var that = null;
@@ -21,11 +22,19 @@ Page({
     needmoney: wx.getStorageSync("needmoney"),
     seconds: 0,
     time: '00:00:00',
-    cost: 0
+
+    cost: 0,
+    using: false
   },
   onLoad: function () {
+    console.log(app.globalData.CurrentStatus)
     that = this;
-    
+
+    this.changeicon();    //查看当前状态改变底部的按钮图片
+    if (wx.getStorageSync("redbag") !== 0) {
+      this.showDialog();
+    }
+    this.setusing();
     var times = time.formatTime(new Date());
     // 再通过setData更改Page()里面的data，动态更新页面的数据  
     this.setData({
@@ -49,28 +58,8 @@ Page({
 
       }
     });
-   // function settime(that) {
-   //   var second = that.data.second
-   //   that.setData({
-    //    hour: (second / 3600),
-   //     mintue: (second - hour * 3600) / 60,
-     //   second: (second - hour * 3600 - mintue * 60)
-    //  });
-    //  return;
-    //  var time = setTimeout(function () {
-    //    that.setData({
-    //      second: second + 1
-          
-     //   }); 
-    //    console.log(second)
-    //    countdown(that);
-   //   }
-     //   , 1000)
-  //  }
     this.changeicon();    //查看当前状态
-    console.log(wx.getStorageSync("needmoney"));.0
-  },
-  onShow: function () {
+    console.log(wx.getStorageSync("needmoney"));
   },
   onReady: function () {
     // 使用 wx.createMapContext 获取 map 上下文
@@ -83,8 +72,8 @@ Page({
   getCenterLocation: function () {
     this.mapCtx.getCenterLocation({
       success: function (res) {
-        console.log(res.longitude)
-        console.log(res.latitude)
+        // console.log(res.longitude)
+        // console.log(res.latitude)
       }
     })
   },
@@ -100,66 +89,7 @@ Page({
   },
   //点击去充值
   addmoney: function () {
-
-    // 充值记录
-    wx.request({ 
-      url: router.user.paymentUrl,
-      data: {
-        rechargeNum: 30, //充值金额
-        rechargeType: 1 //充值类型
-      },
-      method: 'POST',
-      header: {
-        'authenticate': wx.getStorageSync('client_sign'), //唯一标识
-        'content-type': 'application/x-www-form-urlencoded'
-      },
-      success: function (res) {
-
-        /***开始支付请求***/
-        wx.requestPayment({
-
-          //时间戳从1970年1月1日00:00:00至今的秒数,即当前的时间
-          timeStamp: res.data.timeStamp,
-          //随机字符串，长度为32个字符以下。
-          nonceStr: res.data.nonceStr,
-          //统一下单接口返回的 prepay_id 参数值，提交格式如：prepay_id=*
-          package: res.data.package,
-          //签名算法，暂支持 MD5
-          signType: 'MD5',
-          //签名
-          paySign: res.data.paySign,
-          //支付成功，开始更新用户余额
-          success: function (res) {
-            wx.setStorageSync("needmoney", 0);
-            that.setData({
-              needmoney: 0
-            })
-            // 更新余额
-            wx.request({
-              url: res.user.charge_over,
-              data: {
-                "over": 30, //充值金额
-              },
-              method: 'POST',
-              header: {
-                'authenticate': wx.getStorageSync('client_sign'), //唯一标识
-                'content-type': 'application/x-www-form-urlencoded'
-              },
-              success: function (res) {
-              }//endsuccess
-            })//endreqquest
-          },
-          fail: function (res) {
-          },
-          complete: function (res) {
-            wx.setStorageSync("needmoney", 0);
-            that.setData({
-              needmoney: 0
-            })
-          }
-        })
-      }
-    })
+    Function.addmoney(30);
   },
 
   //点击地图上的controls
@@ -181,7 +111,9 @@ Page({
     console.log(e.controlId);
     this.click(e.controlId);
     // 扫码
-    if (e.controlId >= 1)
+    if (e.controlId === 4 && app.globalData.CurrentStatus.status !== 0) {
+      that.getscan();
+    } else if (e.controlId >= 1)
       wx.navigateTo({
         url: Data.pages[e.controlId],
       })
@@ -198,8 +130,11 @@ Page({
 
       switch (type) {
         case 'back':
-          app.globalData.CurrentStatus = all.Statuses.Unusing;
-          that.changeicon();
+          break;
+        case 'get':
+          wx.navigateTo({
+            url: '../myredbag/myredbag?redbag='+wx.getStorageSync("redbag"),
+          })
           break;
         default:
           break;
@@ -210,7 +145,6 @@ Page({
   changeicon: function () {
     let newcontrols = that.data.controls;
     newcontrols[4].iconPath = app.globalData.CurrentStatus.src;
-    console.log(newcontrols);
     that.setData({
       controls: newcontrols
     })
@@ -222,17 +156,28 @@ Page({
       seccess: function (res) {
       }, fail(res) {
       }, complete(res) {
-        if (app.globalData.CurrentStatus===all.Statuses.Using){
+        if (app.globalData.CurrentStatus === all.Statuses.Using) {
           app.globalData.CurrentStatus = all.Statuses.Unusing;
           that.changeicon();
-        }else{
+        } else {
           app.globalData.CurrentStatus = all.Statuses.Using;
           that.changeicon();
-        }  
+        }
+        that.setusing();
       }
     })
   },
-  
+  setusing: function () {
+    if (app.globalData.CurrentStatus === all.Statuses.Using) {
+      that.setData({
+        using: true
+      })
+    } else {
+      that.setData({
+        using: false
+      })
+    }
+  }
 })
 function timing(that) {
   var seconds = that.data.seconds
