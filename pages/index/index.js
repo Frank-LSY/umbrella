@@ -4,6 +4,7 @@ const Zan = require('../../dist/index');
 var Data = require('../../data/index.js');
 //全局变量
 var all = require('../../data/all.js');
+var time = require('../../systemcall/getTime.js')
 var router = require('../../router.js')
 var that = null;
 var app = getApp();
@@ -18,11 +19,54 @@ Page({
     controls: Data.controls,    //地图上的控点
     imformation: "您需要充值押金或余额才能借伞！", //提示信息
     needmoney: wx.getStorageSync("needmoney"),
-    usedtime:{hour:"00",minute:"15",second:"20"},
-    starttime: { hour: "09", minute: "12", second: "20"}
+    seconds: 0,
+    time: '00:00:00',
+    cost: 0
   },
   onLoad: function () {
     that = this;
+    
+    var times = time.formatTime(new Date());
+    // 再通过setData更改Page()里面的data，动态更新页面的数据  
+    this.setData({
+      times: times
+    });
+    timing(this);
+    charging(this);
+    wx.request({
+      url: '',//router.user.time,//传送时间
+      data: {
+        time
+      },
+      method: 'GET',
+      success: function (res) {
+
+      },
+      fail: function () {
+
+      },
+      complete: function () {
+
+      }
+    });
+   // function settime(that) {
+   //   var second = that.data.second
+   //   that.setData({
+    //    hour: (second / 3600),
+   //     mintue: (second - hour * 3600) / 60,
+     //   second: (second - hour * 3600 - mintue * 60)
+    //  });
+    //  return;
+    //  var time = setTimeout(function () {
+    //    that.setData({
+    //      second: second + 1
+          
+     //   }); 
+    //    console.log(second)
+    //    countdown(that);
+   //   }
+     //   , 1000)
+  //  }
     this.changeicon();    //查看当前状态
     console.log(wx.getStorageSync("needmoney"));.0
   },
@@ -184,9 +228,54 @@ Page({
         }else{
           app.globalData.CurrentStatus = all.Statuses.Using;
           that.changeicon();
-        }
-        
+        }  
       }
     })
-  }
+  },
+  
 })
+function timing(that) {
+  var seconds = that.data.seconds
+  if (seconds > 21599) {
+    that.setData({
+      time: 'time is too long'
+    });
+    return;
+  }
+  setTimeout(function () {
+    that.setData({
+      seconds: seconds + 1
+    });
+    timing(that);
+  }
+    , 1000)
+  formatSeconds(that)
+}
+function formatSeconds(that) {
+  var mins = 0, hours = 0, seconds = that.data.seconds, time = ''
+  if (seconds < 60) {
+
+  } else if (seconds < 3600) {
+    mins = parseInt(seconds / 60)
+    seconds = seconds % 60
+  } else {
+    mins = parseInt(seconds / 60)
+    seconds = seconds % 60
+    hours = parseInt(mins / 60)
+    mins = mins % 60
+  }
+  that.setData({
+    time: formatTime(hours) + ':' + formatTime(mins) + ':' + formatTime(seconds)
+  });
+}
+function formatTime(num) {
+  if (num < 10)
+    return '0' + num
+  else
+    return num + ''
+}
+function charging(that) {
+  if (that.data.seconds < 600) {
+    console.log("pay some money")
+  }
+}

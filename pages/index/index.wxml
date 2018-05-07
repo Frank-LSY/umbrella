@@ -10,8 +10,8 @@
     </cover-view>
 
     <cover-view class='umbrellastatus'>
-      <cover-view class='borrowtime'>开始时间：{{starttime.hour}}:{{starttime.minute}}:{{starttime.second}}</cover-view>
-      <cover-view class='totaltime'>使用时间：{{usedtime.hour}}:{{usedtime.minute}}:{{usedtime.second}}</cover-view>
+      <cover-view class='borrowtime'>开始时间：{{times}}</cover-view>
+      <cover-view class='totaltime'>使用时间：{{time}}</cover-view>
     </cover-view>
 
 
