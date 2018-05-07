@@ -38,7 +38,7 @@ cover-view {
   background: black;
   margin-top:60%;
   position: absolute; 
-  opacity: 0.4;
+  opacity: 0.3;
   border-radius: 50rpx;
   margin-left: 10%;
   text-align: center;

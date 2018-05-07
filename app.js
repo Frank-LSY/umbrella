@@ -32,7 +32,6 @@ App({
     CashPledge: 0,  //押金
     using: false, //是否有伞正在使用
     phonenumber:12345678911,
-
   },
 
   // 假设已经注册
