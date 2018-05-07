@@ -21,11 +21,12 @@ Page({
     needmoney: wx.getStorageSync("needmoney"),
     seconds: 0,
     time: '00:00:00',
-    cost: 0
+    cost: 0,
+    using:false
   },
   onLoad: function () {
     that = this;
-    
+    this.setusing();
     var times = time.formatTime(new Date());
     // 再通过setData更改Page()里面的data，动态更新页面的数据  
     this.setData({
@@ -180,15 +181,15 @@ Page({
   controltap(e) {
     console.log(e.controlId);
     this.click(e.controlId);
+    // 跳转
+    
     // 扫码
-    if (e.controlId >= 1)
+    if (e.controlId === 4 && app.globalData.CurrentStatus.status !== 0) {
+      that.getscan();
+    } else if (e.controlId >= 1)
       wx.navigateTo({
         url: Data.pages[e.controlId],
       })
-    // 跳转
-    else if (e.controlId === 4 && app.globalData.CurrentStatus.status !== 0) {
-      that.getscan();
-    } 
   },
 
   // 显示弹窗
@@ -229,10 +230,21 @@ Page({
           app.globalData.CurrentStatus = all.Statuses.Using;
           that.changeicon();
         }  
+        that.setusing();
       }
     })
   },
-  
+  setusing: function () {
+    if (app.globalData.CurrentStatus === all.Statuses.Using){
+      that.setData({
+        using:true
+      })
+    }else{
+      that.setData({
+        using:false
+      })
+    }
+  }
 })
 function timing(that) {
   var seconds = that.data.seconds

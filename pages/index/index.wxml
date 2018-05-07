@@ -9,7 +9,7 @@
       <cover-view class='button' catchtap='addmoney'>充值</cover-view>
     </cover-view>
 
-    <cover-view class='umbrellastatus'>
+    <cover-view class='umbrellastatus' wx:if="{{using}}">
       <cover-view class='borrowtime'>开始时间：{{times}}</cover-view>
       <cover-view class='totaltime'>使用时间：{{time}}</cover-view>
     </cover-view>

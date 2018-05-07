@@ -1,6 +1,7 @@
 var md5 = require("../../systemcall/MD5.js")
 var init = require("../../systemcall/init.js")
 var config = require('../../router.js');
+var all=require("../../data/all.js")
 var app = getApp()
 var inputValue = ''
 
@@ -52,7 +53,7 @@ Page({
         showCancel: false,
         content: '同意授权',
         success: function (res) {
-          app.golobalData.CurrentStatus = all.Statuses.Unusing;
+          app.globalData.CurrentStatus = all.Statuses.Unusing;
           console.log("登陆完成，未借伞");
           wx.login({
             success: function (r) {
