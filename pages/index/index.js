@@ -28,7 +28,7 @@ Page({
   onLoad: function () {
     that = this;
     this.changeicon();    //查看当前状态改变底部的按钮图片
-    if (wx.getStorageSync("redbag")!==0) {
+    if (wx.getStorageSync("redbag") !== 0) {
       this.showDialog();
     }
   },
@@ -84,15 +84,15 @@ Page({
   controltap(e) {
     console.log(e.controlId);
     this.click(e.controlId);
-    // 如果不是借伞还伞，跳转
-    if (e.controlId >= 1)
+
+    //是借伞还伞
+    if (e.controlId === 4 && app.globalData.CurrentStatus.status !== 0) {
+      that.getscan();
+    }// 如果不是借伞还伞，跳转
+    else if (e.controlId >= 1)
       wx.navigateTo({
         url: Data.pages[e.controlId],
       })
-    //是借伞还伞
-    else if (e.controlId === 4 && app.globalData.CurrentStatus.status !== 0) {
-      that.getscan();
-    }
   },
 
   // 显示弹窗
