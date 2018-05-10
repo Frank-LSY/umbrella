@@ -2,11 +2,15 @@
 const Zan = require('../../dist/index');
 //数据模块
 var Data = require('../../data/index.js');
-//全局变量
-var all = require('../../data/all.js');
-var Function=require("../../systemcall/function.js");
+//功能模块，充值
+var Function = require("../../systemcall/function.js");
+//时间模块
 var time = require('../../systemcall/getTime.js')
+//请求地址
 var router = require('../../router.js')
+//动态数据
+const Dynamic=require("../../systemcall/Storage.js");
+
 var that = null;
 var app = getApp();
 
@@ -19,45 +23,19 @@ Page({
     polyline: Data.polyline,    //路线
     controls: Data.controls,    //地图上的控点
     imformation: "您需要充值押金或余额才能借伞！", //提示信息
-    needmoney: wx.getStorageSync("needmoney"),
+    needmoney: Dynamic.getNeedMoney(),
     seconds: 0,
     time: '00:00:00',
     cost: 0,
     using: false
   },
   onLoad: function () {
-    console.log(app.globalData.CurrentStatus)
     that = this;
     this.changeicon();    //查看当前状态改变底部的按钮图片
-    if (wx.getStorageSync("redbag") !== 0) {
-      this.showDialog();
+    if (Dynamic.getRedBag() !== 0) {  //是否有红包要领
+      this.showDialog(Data.Dialogs[0]); //显示领红包的dialog
     }
     this.setusing();
-    var times = time.formatTime(new Date());
-    // 再通过setData更改Page()里面的data，动态更新页面的数据  
-    this.setData({
-      times: times
-    });
-    timing(this);
-    charging(this);
-    wx.request({
-      url: '',//router.user.time,//传送时间
-      data: {
-        time
-      },
-      method: 'GET',
-      success: function (res) {
-
-      },
-      fail: function () {
-
-      },
-      complete: function () {
-
-      }
-    });
-    this.changeicon();    //查看当前状态
-    console.log(wx.getStorageSync("needmoney"));
   },
   onReady: function () {
     // 使用 wx.createMapContext 获取 map 上下文
@@ -70,8 +48,6 @@ Page({
   getCenterLocation: function () {
     this.mapCtx.getCenterLocation({
       success: function (res) {
-        // console.log(res.longitude)
-        // console.log(res.latitude)
       }
     })
   },
@@ -118,16 +94,15 @@ Page({
   },
 
   // 显示弹窗
-  showDialog: function () {
-    Zan.Dialog(Data.Dialogs[0]).then(({ type }) => {
+  showDialog: function (Dialogs) {
+    Zan.Dialog(Dialogs).then(({ type }) => {
       // type 可以用于判断具体是哪一个按钮被点击
-
       switch (type) {
         case 'back':
           break;
         case 'get':
           wx.navigateTo({
-            url: '../myredbag/myredbag?redbag='+wx.getStorageSync("redbag"),
+            url: '../myredbag/myredbag',
           })
           break;
         default:
@@ -136,14 +111,13 @@ Page({
       console.log('=== dialog with custom buttons ===', `type: ${type}`);
     });
   },
+  //根据当前的状态，改变地图上控件的图片
   changeicon: function () {
     let newcontrols = that.data.controls;
     newcontrols[4].iconPath = app.globalData.CurrentStatus.src;
-    // console.log(newcontrols);
-    that.setData({
-      controls: newcontrols
-    })
+    that.setData({controls: newcontrols})
   },
+  //调用扫码
   getscan: function () {
     wx.scanCode({
       onlyFromCamera: true,
@@ -162,60 +136,69 @@ Page({
       }
     })
   },
+  //改变使用状态，控制计时窗口
   setusing: function () {
-    if (app.globalData.CurrentStatus === all.Statuses.Using) {
-      that.setData({
-        using: true
-      })
-    } else {
-      that.setData({
-        using: false
-      })
-    }
+    that.setData({
+      using:app.globalData.CurrentStatus === all.Statuses.Using?true:false
+    })
+  },
+  //借伞时得到时间
+  settime:function(){
+    let times = time.formatTime(new Date());
+    // 再通过setData更改Page()里面的data，动态更新页面的数据  
+    this.setData({
+      times: times
+    });
+    timing(this);
+    charging(this);
   }
 })
-function timing(that) {
-  var seconds = that.data.seconds
-  if (seconds > 21599) {
-    that.setData({
-      time: 'time is too long'
-    });
-    return;
-  }
-  setTimeout(function () {
-    that.setData({
-      seconds: seconds + 1
-    });
-    timing(that);
-  }
-    , 1000)
-  formatSeconds(that)
-}
-function formatSeconds(that) {
-  var mins = 0, hours = 0, seconds = that.data.seconds, time = ''
-  if (seconds < 60) {
 
-  } else if (seconds < 3600) {
-    mins = parseInt(seconds / 60)
-    seconds = seconds % 60
-  } else {
-    mins = parseInt(seconds / 60)
-    seconds = seconds % 60
-    hours = parseInt(mins / 60)
-    mins = mins % 60
+
+
+
+function timing(that) {
+    var seconds = that.data.seconds
+    if (seconds > 21599) {
+      that.setData({
+        time: 'time is too long'
+      });
+      return;
+    }
+    setTimeout(function () {
+      that.setData({
+        seconds: seconds + 1
+      });
+      timing(that);
+    }
+      , 1000)
+    formatSeconds(that)
   }
-  that.setData({
-    time: formatTime(hours) + ':' + formatTime(mins) + ':' + formatTime(seconds)
-  });
-}
+function formatSeconds(that) {
+    var mins = 0, hours = 0, seconds = that.data.seconds, time = ''
+    if (seconds < 60) {
+
+    } else if (seconds < 3600) {
+      mins = parseInt(seconds / 60)
+      seconds = seconds % 60
+    } else {
+      mins = parseInt(seconds / 60)
+      seconds = seconds % 60
+      hours = parseInt(mins / 60)
+      mins = mins % 60
+    }
+    that.setData({
+      time: formatTime(hours) + ':' + formatTime(mins) + ':' + formatTime(seconds)
+    });
+  }
 function formatTime(num) {
-  if (num < 10)
-    return '0' + num
-  else
-    return num + ''
-}
-function charging(that) {
-  if (that.data.seconds < 600) {
-    console.log("pay some money")
+    if (num < 10)
+      return '0' + num
+    else
+      return num + ''
   }
-}
+function charging(that) {
+    if (that.data.seconds < 600) {
+      console.log("pay some money")
+    }
+  }

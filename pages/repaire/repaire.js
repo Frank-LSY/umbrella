@@ -1,11 +1,12 @@
 // pages/newpage/repaire/repaire.js
 const Zan = require('../../dist/index');
-
-var router = require('../../router.js')
-
+//请求地址
+const router = require('../../router.js')
+//动态数据
+const Dynamic = require("../../systemcall/Storage.js");
+//静态数据
+const Static=require("../../systemcall/Static.js");
 var that=null;
-
-var app = getApp();
 
 Page({
 
@@ -13,7 +14,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    using:!app.globalData.using,
+    using:false,
     classunclick:'',
     classclick:'primary',
     losing:false,
@@ -40,9 +41,9 @@ Page({
         case 'confirm':
         // 扣除押金，解除正在使用的状态，返回主界面，重新加载小程序
           that.reducemoney();
-          app.globalData.using=false;
+
           that.setData({
-            using:app.globalData.using
+            using:false
           })
           break; 
         default:
@@ -79,6 +80,9 @@ Page({
    */
   onLoad: function (options) {
       that=this;
+      if (DynamictgetCurrentStatus === Static.Statuses.Using){
+        that.setData({using:true});
+      }
   },
 
   /**

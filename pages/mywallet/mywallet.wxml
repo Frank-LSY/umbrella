@@ -6,9 +6,9 @@
             <zan-button slot="footer">购买</zan-button>
     </zan-cell>
     <zan-cell title="余额" label="{{Balance}}元">
-            <zan-button slot="footer">充值</zan-button>
+            <zan-button slot="footer" bindtap="addmoney">充值</zan-button>
     </zan-cell>
-    <zan-cell title="红包余额" value="{{Redbag}}元">
+    <zan-cell title="红包余额" value="{{Redbag}}元" >
     </zan-cell>
     <zan-cell title="微信免密" value="未开通">
     </zan-cell>
