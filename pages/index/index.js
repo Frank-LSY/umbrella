@@ -94,10 +94,6 @@ Page({
       wx.navigateTo({
         url: Data.pages[e.controlId],
       })
-    // 跳转
-    else if (e.controlId === 4 && app.globalData.CurrentStatus.status !== 0) {
-      that.getscan();
-    } 
   },
 
   // 显示弹窗
