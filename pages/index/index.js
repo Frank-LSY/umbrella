@@ -26,11 +26,13 @@ Page({
     needmoney: Dynamic.getNeedMoney(),
     seconds: 0,
     time: '00:00:00',
+
     cost: 0,
     using: false
   },
   onLoad: function () {
     that = this;
+
     this.changeicon();    //查看当前状态改变底部的按钮图片
     if (Dynamic.getRedBag() !== 0) {  //是否有红包要领
       this.showDialog(Data.Dialogs[0]); //显示领红包的dialog
@@ -92,6 +94,10 @@ Page({
       wx.navigateTo({
         url: Data.pages[e.controlId],
       })
+    // 跳转
+    else if (e.controlId === 4 && app.globalData.CurrentStatus.status !== 0) {
+      that.getscan();
+    } 
   },
 
   // 显示弹窗
