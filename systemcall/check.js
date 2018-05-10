@@ -1,6 +1,7 @@
-var app = getApp();
-//全局数据
-var all=require('../data/all.js')
+//动态数据
+const Dynamic = require("./Storage.js");
+// 静态数据
+const Static=require("./Static.js");
 //存放时刻需要检查的调用
 var router = require("../router.js");
 
@@ -20,7 +21,7 @@ module.exports={
       success: function (res) {
       }, fail: function (res) {
       }, complete: function (res) {
-        app.globalData.CurrentStatus = simulate() ? all.Statuses.Registered : all.Statuses.Unregister
+        Dynamic.setCurrentStatus(simulate() ? Static.Statuses.Registered : Static.Statuses.Unregister)
       }
     });
   },
@@ -50,9 +51,9 @@ module.exports={
       success: function (res) {
       }, fail: function (res) {
       }, complete: function (res) {
-        wx.setStorageSync("hadredbag", 10);
-        wx.setStorageSync("redbag", 5);
-        wx.setStorageSync("needmoney", 30);
+        Dynamic.setHadRedBag(10);
+        Dynamic.setRedBag(5);
+        Dynamic.setNeedMoney(30);
         console.log("checkmoney");
       }
     });

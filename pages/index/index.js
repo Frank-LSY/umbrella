@@ -4,12 +4,12 @@ const Zan = require('../../dist/index');
 var Data = require('../../data/index.js');
 //功能模块，充值
 var Function = require("../../systemcall/function.js");
-//时间模块
-var time = require('../../systemcall/getTime.js')
 //请求地址
 var router = require('../../router.js')
 //动态数据
-const Dynamic=require("../../systemcall/Storage.js");
+const Dynamic = require("../../systemcall/Storage.js");
+//静态数据
+const Static=require("../../systemcall/Static.js")
 
 var that = null;
 var app = getApp();
@@ -48,6 +48,7 @@ Page({
   getCenterLocation: function () {
     this.mapCtx.getCenterLocation({
       success: function (res) {
+        console.log(res)
       }
     })
   },
@@ -85,7 +86,7 @@ Page({
     console.log(e.controlId);
     this.click(e.controlId);
     // 扫码
-    if (e.controlId === 4 && app.globalData.CurrentStatus.status !== 0) {
+    if (e.controlId === 4 && Dynamic.getCurrentStatus().status !== 0) {
       that.getscan();
     } else if (e.controlId >= 1)
       wx.navigateTo({
@@ -114,8 +115,8 @@ Page({
   //根据当前的状态，改变地图上控件的图片
   changeicon: function () {
     let newcontrols = that.data.controls;
-    newcontrols[4].iconPath = app.globalData.CurrentStatus.src;
-    that.setData({controls: newcontrols})
+    newcontrols[4].iconPath = Dynamic.getCurrentStatus().src;
+    that.setData({ controls: newcontrols })
   },
   //调用扫码
   getscan: function () {
@@ -125,11 +126,11 @@ Page({
       seccess: function (res) {
       }, fail(res) {
       }, complete(res) {
-        if (app.globalData.CurrentStatus === all.Statuses.Using) {
-          app.globalData.CurrentStatus = all.Statuses.Unusing;
+        if (Dynamic.getCurrentStatus() === Static.Statuses.Using) {
+          Dynamic.setCurrentStatus(Static.Statuses.Unusing);
           that.changeicon();
         } else {
-          app.globalData.CurrentStatus = all.Statuses.Using;
+          Dynamic.setCurrentStatus(Static.Statuses.Using); 
           that.changeicon();
         }
         that.setusing();
@@ -139,16 +140,16 @@ Page({
   //改变使用状态，控制计时窗口
   setusing: function () {
     that.setData({
-      using:app.globalData.CurrentStatus === all.Statuses.Using?true:false
+      using: Dynamic.getCurrentStatus() === Static.Statuses.Using ? true : false
     })
   },
   //借伞时得到时间
-  settime:function(){
-    let times = time.formatTime(new Date());
+  settime: function () {
+    let times = Function.formatTime(new Date());
     // 再通过setData更改Page()里面的data，动态更新页面的数据  
     this.setData({
       times: times
-    });
+      });
     timing(this);
     charging(this);
   }
@@ -158,47 +159,47 @@ Page({
 
 
 function timing(that) {
-    var seconds = that.data.seconds
-    if (seconds > 21599) {
-      that.setData({
-        time: 'time is too long'
-      });
-      return;
-    }
-    setTimeout(function () {
-      that.setData({
-        seconds: seconds + 1
-      });
-      timing(that);
-    }
-      , 1000)
-    formatSeconds(that)
-  }
-function formatSeconds(that) {
-    var mins = 0, hours = 0, seconds = that.data.seconds, time = ''
-    if (seconds < 60) {
-
-    } else if (seconds < 3600) {
-      mins = parseInt(seconds / 60)
-      seconds = seconds % 60
-    } else {
-      mins = parseInt(seconds / 60)
-      seconds = seconds % 60
-      hours = parseInt(mins / 60)
-      mins = mins % 60
-    }
+  var seconds = that.data.seconds
+  if (seconds > 21599) {
     that.setData({
-      time: formatTime(hours) + ':' + formatTime(mins) + ':' + formatTime(seconds)
+      time: 'time is too long'
     });
+    return;
   }
+  setTimeout(function () {
+    that.setData({
+      seconds: seconds + 1
+    });
+    timing(that);
+  }
+    , 1000)
+  formatSeconds(that)
+}
+function formatSeconds(that) {
+  var mins = 0, hours = 0, seconds = that.data.seconds, time = ''
+  if (seconds < 60) {
+
+  } else if (seconds < 3600) {
+    mins = parseInt(seconds / 60)
+    seconds = seconds % 60
+  } else {
+    mins = parseInt(seconds / 60)
+    seconds = seconds % 60
+    hours = parseInt(mins / 60)
+    mins = mins % 60
+  }
+  that.setData({
+    time: formatTime(hours) + ':' + formatTime(mins) + ':' + formatTime(seconds)
+  });
+}
 function formatTime(num) {
-    if (num < 10)
-      return '0' + num
-    else
-      return num + ''
-  }
+  if (num < 10)
+    return '0' + num
+  else
+    return num + ''
+}
 function charging(that) {
-    if (that.data.seconds < 600) {
-      console.log("pay some money")
-    }
+  if (that.data.seconds < 600) {
+    console.log("pay some money")
   }
+}

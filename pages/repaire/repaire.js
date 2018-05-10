@@ -5,8 +5,8 @@ const router = require('../../router.js')
 //动态数据
 const Dynamic = require("../../systemcall/Storage.js");
 //静态数据
-const Static=require("../../systemcall/Static.js");
-var that=null;
+const Static = require("../../systemcall/Static.js");
+var that = null;
 
 Page({
 
@@ -14,11 +14,11 @@ Page({
    * 页面的初始数据
    */
   data: {
-    using:false,
-    classunclick:'',
-    classclick:'primary',
-    losing:false,
-    repaire:true,
+    using: false,
+    classunclick: '',
+    classclick: 'primary',
+    losing: false,
+    repaire: true,
   },
   showDialog: function () {
     Zan.Dialog(
@@ -30,28 +30,29 @@ Page({
         buttons: [{
           text: '返回', color: 'green', type: 'back'
         }, {
-            text: '确定', color: 'red', type: 'confirm'
-          }]
+          text: '确定', color: 'red', type: 'confirm'
+        }]
       }).then(({ type }) => {
-      // type 可以用于判断具体是哪一个按钮被点击
-      switch (type) {
-        case 'back':
-          break;
-        // 点击确认
-        case 'confirm':
-        // 扣除押金，解除正在使用的状态，返回主界面，重新加载小程序
-          that.reducemoney();
-
-          that.setData({
-            using:false
-          })
-          break; 
-        default:
-          break;
-      }
-    });
+        // type 可以用于判断具体是哪一个按钮被点击
+        switch (type) {
+          case 'back':
+            break;
+          // 点击确认
+          case 'confirm':
+            // 扣除押金，解除正在使用的状态，返回主界面，重新加载小程序
+            if (losing) {
+              that.reducemoney();
+            } else {
+              //报修
+            }
+            that.setData({ using: false })
+            break;
+          default:
+            break;
+        }
+      });
   },
-  reducemoney:function(){
+  reducemoney: function () {
     wx.request({
       url: router.user.deduct_deposit,
       data: {},
@@ -72,45 +73,45 @@ Page({
       complete: function () {
         // complete
       }
-    }) 
+    })
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-      that=this;
-      if (DynamictgetCurrentStatus === Static.Statuses.Using){
-        that.setData({using:true});
-      }
+    that = this;
+    if (DynamictgetCurrentStatus === Static.Statuses.Using) {
+      that.setData({ using: true });
+    }
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-  
+
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-  
+
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-  
+
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-  
+
   },
 
   /**
@@ -124,7 +125,7 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-  
+
   },
 
   /**
@@ -134,10 +135,10 @@ Page({
   },
 
   // 点击了报修或者报失按钮
-  click:function(e){
-      this.setData({
-        losing:this.data['losing']^true,
-        repaire:this.data['repaire']^true
-      })
-    }
+  click: function (e) {
+    this.setData({
+      losing: this.data['losing'] ^ true,
+      repaire: this.data['repaire'] ^ true
+    })
+  }
 })

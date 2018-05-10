@@ -1,8 +1,9 @@
 //获取初始化的数据（用户，用伞情况）
 var check = require('./systemcall/check.js');
-//存储
-var storage=require("./systemcall/Storage.js");
-
+//动态数据
+var Dynamic=require("./systemcall/Storage.js");
+//静态数据
+const Static=require("./systemcall/Static.js");
 var that;
 App({
   globalData: {
@@ -12,9 +13,10 @@ App({
     that = this,
     wx.getUserInfo({
       success: function (res) {
-          storage.setUserInfo(res.userInfo);
+        Dynamic.setUserInfo(res.userInfo);
       }
-    })
+    }),
+    Dynamic.setCurrentStatus(Static.Statuses.Unusing)
   }
 })
 

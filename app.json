@@ -1,10 +1,8 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/login/login",
     "pages/service/service",
     "pages/user/user",
-    "pages/Register/Register",
     "pages/explain/explain",
     "pages/mywallet/mywallet",
     "pages/myredbag/myredbag",

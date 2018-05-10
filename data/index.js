@@ -1,4 +1,5 @@
-var all = require('/all.js');
+var Static = require("../systemcall/Static.js");
+const Dynamic=require("../systemcall/Storage.js");
 var app = getApp();
 module.exports = {
   //伞点
@@ -11,7 +12,7 @@ module.exports = {
       //定位按钮
       id: 0, iconPath: "../../images/imgs_main_location@2x.png",
       position: {
-        left: 0, top: all.screenH - 100,
+        left: 0, top: Static.screenH - 100,
         width: 40, height: 40
       },
       clickable: true
@@ -20,7 +21,7 @@ module.exports = {
       //查看雨伞分布点
       id: 1, iconPath: '../../images/ico_show_list.png',
       position: {
-        left: all.screenW - 50, top: all.screenH - 100,
+        left: Static.screenW - 50, top: Static.screenH - 100,
         width: 40, height: 40
       }, clickable: true
     }
@@ -29,7 +30,7 @@ module.exports = {
       id: 2,
       iconPath: '../../images/qrode02.png',
       position: {
-        left: 0, top: all.screenH - 50,
+        left: 0, top: Static.screenH - 50,
         width: 50, height: 50
       }, clickable: true
     }, {
@@ -37,7 +38,7 @@ module.exports = {
       id: 3, iconPath: '../../images/user.png',
       target: '../user/user',
       position: {
-        left: all.screenW - 50, top: all.screenH - 50,
+        left: Static.screenW - 50, top: Static.screenH - 50,
         width: 40, height: 40
       }, clickable: true
     },
@@ -45,20 +46,20 @@ module.exports = {
       //登录注册
       id: 4,
       position: {
-        left: 0.35 * all.screenW, top: 0.85 * all.screenH,
-        width: 0.3 * all.screenW, height: 0.08 * all.screenH
+        left: 0.35 * Static.screenW, top: 0.85 * Static.screenH,
+        width: 0.3 * Static.screenW, height: 0.08 * Static.screenH
       },
-      iconPath: app.globalData.CurrentStatus.src,      
+      iconPath:"",      
       clickable: true,
     },
     { //使用说明
       id: 5, iconPath: '../../images/explain.png',
       target: '../explain/explain',
       position: {
-        left: 0.12 * all.screenW,
-        top: 0.10 * all.screenH,
-        width: 0.77 * all.screenW,
-        height: 0.08 * all.screenH
+        left: 0.12 * Static.screenW,
+        top: 0.10 * Static.screenH,
+        width: 0.77 * Static.screenW,
+        height: 0.08 * Static.screenH
       }, clickable: true
     }],
   //******controls********************/
