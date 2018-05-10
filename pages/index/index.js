@@ -9,7 +9,7 @@ var router = require('../../router.js')
 //动态数据
 const Dynamic = require("../../systemcall/Storage.js");
 //静态数据
-const Static=require("../../systemcall/Static.js")
+const Static = require("../../systemcall/Static.js")
 
 var that = null;
 var app = getApp();
@@ -32,6 +32,7 @@ Page({
   },
   onLoad: function () {
     that = this;
+    Dynamic.setCurrentStatus(Static.Statuses.Unusing)
 
     this.changeicon();    //查看当前状态改变底部的按钮图片
     if (Dynamic.getRedBag() !== 0) {  //是否有红包要领
@@ -90,10 +91,11 @@ Page({
     // 扫码
     if (e.controlId === 4 && Dynamic.getCurrentStatus().status !== 0) {
       that.getscan();
-    } else if (e.controlId >= 1)
+    } else if (e.controlId >= 1) {
       wx.navigateTo({
         url: Data.pages[e.controlId],
       })
+    }
   },
 
   // 显示弹窗
@@ -122,27 +124,31 @@ Page({
   },
   //调用扫码
   getscan: function () {
+    console.log(Dynamic.getCurrentStatus())
+
     wx.scanCode({
       onlyFromCamera: true,
       scanType: ['qrCode'],
       seccess: function (res) {
       }, fail(res) {
       }, complete(res) {
-        if (Dynamic.getCurrentStatus() === Static.Statuses.Using) {
+        if (Dynamic.getCurrentStatus().status === Static.Statuses.Using.status) {
           Dynamic.setCurrentStatus(Static.Statuses.Unusing);
           that.changeicon();
         } else {
-          Dynamic.setCurrentStatus(Static.Statuses.Using); 
+          Dynamic.setCurrentStatus(Static.Statuses.Using);
           that.changeicon();
         }
         that.setusing();
+        console.log(Dynamic.getCurrentStatus())
+
       }
     })
   },
   //改变使用状态，控制计时窗口
   setusing: function () {
     that.setData({
-      using: Dynamic.getCurrentStatus() === Static.Statuses.Using ? true : false
+      using: Dynamic.getCurrentStatus().status === Static.Statuses.Using.status ? true : false
     })
   },
   //借伞时得到时间
@@ -151,7 +157,7 @@ Page({
     // 再通过setData更改Page()里面的data，动态更新页面的数据  
     this.setData({
       times: times
-      });
+    });
     timing(this);
     charging(this);
   }

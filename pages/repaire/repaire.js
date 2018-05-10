@@ -40,12 +40,15 @@ Page({
           // 点击确认
           case 'confirm':
             // 扣除押金，解除正在使用的状态，返回主界面，重新加载小程序
-            if (losing) {
+            if (that.data.losing) {
               that.reducemoney();
             } else {
               //报修
             }
-            that.setData({ using: false })
+            that.setData({ using: false });
+            wx.reLaunch({
+              url: '../index/index',
+            })
             break;
           default:
             break;
@@ -81,7 +84,10 @@ Page({
    */
   onLoad: function (options) {
     that = this;
-    if (Dynamic.getCurrentStatus === Static.Statuses.Using) {
+    console.log(typeof Dynamic.getCurrentStatus())
+    console.log(typeof Static.Statuses.Using)
+    if (Dynamic.getCurrentStatus().status == Static.Statuses.Using.status) {
+      console.log("d");
       that.setData({ using: true });
     }
   },
