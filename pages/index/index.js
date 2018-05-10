@@ -17,8 +17,9 @@ var app = getApp();
 Page({
   // 页面数据
   data: {
-    longitude: null,
-    latitude: null,
+    mapCtx:null,
+    longitude: 0,
+    latitude: 0,
     markers: Data.markers,    //伞点
     polyline: Data.polyline,    //路线
     controls: Data.controls,    //地图上的控点
@@ -33,7 +34,6 @@ Page({
   onLoad: function () {
     that = this;
     Dynamic.setCurrentStatus(Static.Statuses.Unusing)
-
     this.changeicon();    //查看当前状态改变底部的按钮图片
     if (Dynamic.getRedBag() !== 0) {  //是否有红包要领
       this.showDialog(Data.Dialogs[0]); //显示领红包的dialog
@@ -43,8 +43,7 @@ Page({
   onReady: function () {
     // 使用 wx.createMapContext 获取 map 上下文
     this.mapCtx = wx.createMapContext('map');
-    this.getCenterLocation();
-    this.moveToLocation();
+    this.click(0)
   },
 
   // 得到地图中心的位置
@@ -81,12 +80,11 @@ Page({
         break;
     }
   },
-  regionchange(e) { console.log(e.type) },
-  markertap(e) { console.log(e.markerId) },
+  regionchange(e) { },
+  markertap(e) { },
 
   // 对地图的上的controls点击事件绑定
   controltap(e) {
-    console.log(e.controlId);
     this.click(e.controlId);
     // 扫码
     if (e.controlId === 4 && Dynamic.getCurrentStatus().status !== 0) {
@@ -113,7 +111,6 @@ Page({
         default:
           break;
       }
-      console.log('=== dialog with custom buttons ===', `type: ${type}`);
     });
   },
   //根据当前的状态，改变地图上控件的图片
@@ -124,8 +121,6 @@ Page({
   },
   //调用扫码
   getscan: function () {
-    console.log(Dynamic.getCurrentStatus())
-
     wx.scanCode({
       onlyFromCamera: true,
       scanType: ['qrCode'],
@@ -140,8 +135,6 @@ Page({
           that.changeicon();
         }
         that.setusing();
-        console.log(Dynamic.getCurrentStatus())
-
       }
     })
   },
@@ -162,6 +155,27 @@ Page({
     charging(this);
   }
 })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

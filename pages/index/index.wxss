@@ -8,46 +8,45 @@ map {
 
 cover-view {
   display: inline;
+  text-align: center;
+  vertical-align: middle;
 }
 
 .crop-box-parent {
   background: oldlace;
   width: 100%;
   position: absolute;
-  height: 90rpx;
+  height: 8%;
+  font-size: 0.95em;
 }
 
 .button {
-  margin-top: 15rpx;
-  margin-right: 50rpx;
   border: solid snow;
   float: right;
-  height: 1.2em;
-  font-size: 0.8em
+  margin-right: 4%;
+  margin-top: 2.5%;
 }
 
 .information {
   float: left;
-  margin-top: 15rpx;
-  margin-left: 50rpx;
-  height: 60rpx;
   border: solid oldlace;
-  font-size: 0.8em
+  margin-left: 5%;
+  margin-top: 2.5%;
 }
 
-.umbrellastatus{
-  height:30%;
+.umbrellastatus {
+  height: 30%;
   width: 80%;
   background: black;
-  margin-top:60%;
-  position: absolute; 
+  margin-top: 60%;
+  position: absolute;
   opacity: 0.3;
   border-radius: 50rpx;
   margin-left: 10%;
   text-align: center;
 }
 
-.borrowtime ,.totaltime{
+.borrowtime, .totaltime {
   color: white;
   display: block;
   bottom: 0;
