@@ -16,7 +16,10 @@ App({
         Dynamic.setUserInfo(res.userInfo);
       }
     }),
-    Dynamic.setCurrentStatus(Static.Statuses.Unusing)
+    Dynamic.setCurrentStatus(Static.Statuses.Unusing);
+    check.checkRegister();  //检查注册
+    check.checkMoney();     //检查账户
+    check.getMarkers();
   }
 })
 

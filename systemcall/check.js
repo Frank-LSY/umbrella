@@ -10,9 +10,22 @@ function simulate () {
   return Math.random() < 0.5 ? true : false;
 }
 module.exports={
-  
+  //得到伞点
+  getMarkers:function(){
+    wx.request({
+      url: router.user.get_station_location,
+      method: 'GET',
+      dataType: 'json',
+      responseType: 'text',
+      success: function (res) {
+        wx.setStorageSync("umbrellapoint", res.data.data.markers);
+      },
+      fail: function (res) { },
+      complete: function (res) { },
+    })
+  },
   //检查是否注册
-  checkregister:function(user) {
+  checkRegister:function(user) {
     console.log("checkuser")
     wx.request({
       url: router.user.checkuser,
@@ -28,7 +41,7 @@ module.exports={
 
 
   //判断当前网络
-  checknet:function() {
+  checkNet:function() {
     console.log("checknet")
     wx.getNetworkType({
       success: function (res) {
@@ -42,7 +55,7 @@ module.exports={
   },
 
   //请求我的账户，包括余额，已领红包，待领红包，押金
-  checkmoney:function() {
+  checkMoney:function() {
     wx.request({
       url: router.user.my_account,
       method: 'GET',
