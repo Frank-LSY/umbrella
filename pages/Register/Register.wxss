@@ -8,6 +8,16 @@
     line-height: 80rpx;
 }
 
+.btn-login2 {
+    position: absolute;
+    left: 0rpx;
+    right: 0rpx;
+    top: 630rpx;
+    width: 750rpx;
+    height: 100rpx;
+    line-height: 80rpx;
+}
+
 /*image*/
 image.ico-wxlogin-login{
 	width:84rpx;
@@ -51,6 +61,7 @@ button.btn-wxlogin{
 display:inline-block;
 text-align:center;
 }
+
 .btn-cancel{
 /*color:#ccc;*/
 }
@@ -111,6 +122,8 @@ color:#0af934;
 .bottom {
  padding-bottom:8rpx;
 }
+
+
 .title {
  height: 30rpx;
  line-height: 30rpx;
@@ -143,3 +156,4 @@ radio{
 
 .fl { float: left;}
 .fr { float: right;}
+/* pages/Register/Register.wxss */

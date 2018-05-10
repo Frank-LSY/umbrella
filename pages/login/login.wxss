@@ -1,3 +1,4 @@
+/* pages/login/login.wxss */
 .btn-login {
     position: absolute;
     left: 40rpx;

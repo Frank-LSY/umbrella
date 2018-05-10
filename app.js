@@ -1,56 +1,36 @@
-//发送请求的地址
-var config = require('./router.js');
 //获取初始化的数据（用户，用伞情况）
-var init=require('./systemcall/init.js');
-//检查网络等状态
-var check=require('./systemcall/check.js');
-var router = require('./router.js')
-var all=require('./data/all.js');
+var check = require('./systemcall/check.js');
+//动态数据
+var Dynamic=require("./systemcall/Storage.js");
+//静态数据
+const Static=require("./systemcall/Static.js");
 var that;
 App({
-  getUserInfo: function (cb) {
-    if (this.globalData.userInfo) {
-      typeof cb == "function" && cb(this.globalData.userInfo)
-    } else {
-      //调用登录接口  
-      wx.login({
-        success: function () {
-          wx.getUserInfo({
-            success: function (res) {
-              that.globalData.userInfo = res.userInfo;
-              typeof cb == "function" && cb(that.globalData.userInfo)
-            }
-          })
-        }
-      });
-    }
-  },
   globalData: {
-    userInfo: null, //用户数据
-    CurrentStatus: all.Statuses.Unregister, //登录状态,初始为未登录
-    Balance: 0, //余额
-    CashPledge: 0,  //押金
-    using: false, //是否有伞正在使用
-    phonenumber:12345678911,
   },
 
-  // 假设已经注册
   onLaunch: function () {
-    that = this;
-    wx.request({
-      url: router.user.registerUrl,
-      method: 'GET',
-      dataType: 'json',
-      responseType: 'text',
+    that = this,
+    wx.getUserInfo({
       success: function (res) {
-        // console.log("register");
-        // console.log(res);
-      }, fail: function (res) {
-        // console.log(res);
-      }, complete(res) {
-        that.globalData.CurrentStatus = all.Statuses.Unregister;
+        Dynamic.setUserInfo(res.userInfo);
       }
-    })
-  },
+    }),
+    /*调用登录接口*/
+      wx.login({
+        success: function (res) {
+          if (res.code) {
+            //发起网络请求  
+            console.log(res.code)
+          } else {
+            console.log('获取用户登录态失败！' + res.errMsg)
+          }
+        }
+      }); 
+    Dynamic.setCurrentStatus(Static.Statuses.Unusing);
+    check.checkRegister();  //检查注册
+    check.checkMoney();     //检查账户
+    check.getMarkers();
+  }
 })
 

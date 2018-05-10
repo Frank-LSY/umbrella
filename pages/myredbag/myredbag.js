@@ -1,4 +1,7 @@
 // pages/newpage/myredbag/myredbag.js
+//动态数据
+const Dynamic=require("../../systemcall/Storage.js");
+
 const Toptips = require('../../dist/toptips/index');
 
 
@@ -8,27 +11,31 @@ Page({
    */
   data: {
     hadredbag: "0",
-    redbag: null,
+    redbag: 0,
     duration: 2000,
   },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
+  
   onLoad: function (options) {
     console.log(options);
     console.log(this.data.hadredbag);
-    //红正在领取红包
     this.setData({
-      hadredbag: this.data.hadredbag + "+" + options.redbag,
-      redbag: parseFloat(options.redbag)
-    });
-    //红包领取完成
-    setTimeout(() => {
+      hadredbag:Dynamic.getHadRedBag()
+    })
+    if (Dynamic.getRedBag() !== 0) {
+      //正在领取红包
       this.setData({
-        hadredbag: this.data.redbag + parseFloat(this.data.hadredbag),
-        redbag: 0
-      })
-    }, this.data.duration);
+        hadredbag: this.data.hadredbag + "+" + Dynamic.getRedBag(),
+        redbag: Dynamic.getRedBag()
+      });
+      //红包领取完成
+      setTimeout(() => {
+        this.setData({
+          hadredbag: this.data.redbag + parseFloat(this.data.hadredbag),
+          redbag: 0
+        })
+        Dynamic.setHadRedBag(Dynamic.getHadRedBag()+Dynamic.getRedBag()); 
+        Dynamic.setRedBag(0);
+      }, this.data.duration);
+    }
   }
 })

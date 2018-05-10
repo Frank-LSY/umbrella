@@ -14,22 +14,25 @@ cover-view {
   background: oldlace;
   width: 100%;
   position: absolute;
-  height: 80rpx;
+  height: 90rpx;
 }
 
 .button {
-  margin-top: 17rpx;
+  margin-top: 15rpx;
   margin-right: 50rpx;
   border: solid snow;
   float: right;
-  font-size: 30rpx;
+  height: 1.2em;
+  font-size: 0.8em
 }
 
 .information {
   float: left;
-  margin-top: 17rpx;
+  margin-top: 15rpx;
   margin-left: 50rpx;
-  font-size: 32rpx;
+  height: 60rpx;
+  border: solid oldlace;
+  font-size: 0.8em
 }
 
 .umbrellastatus{

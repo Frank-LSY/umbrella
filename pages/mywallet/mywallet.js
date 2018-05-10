@@ -1,5 +1,6 @@
 // pages/newpage/mywallet/mywallet.js
 
+var Function=require("../../systemcall/function.js");
 Page({
 
   /**
@@ -19,5 +20,7 @@ Page({
         Redbag:wx.getStorageSync("redbag")
       })
   },
-  
+  addmoney:function(){
+    Function.addmoney(5);
+  }
 })

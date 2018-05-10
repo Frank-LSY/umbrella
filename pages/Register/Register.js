@@ -1,8 +1,11 @@
 // pages/newpage/Register/Register.js
-var config=require("../../router.js")
+var config = require("../../router.js")
 Page({
   data: {
-    flag:true,
+    flag: true,
+    flag2: true,
+    appid: '1wqas2342dasaqwe2323424ac23qwe',//appid需自己提供
+    secret: 'e0dassdadef2424234209bwqqweqw123ccqwa',//secret需自己提供
     getCodeBtnProperty: {
       titileColor: '#B4B4B4',
       disabled: true,
@@ -30,26 +33,67 @@ Page({
 
     //校验码
     SALT: "AIRBIKESALT",
-  
+
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
-  
+  onLoad: function () {
+    var that = this
+    var user = wx.getStorageSync('user') || {};
+    var userInfo = wx.getStorageSync('userInfo') || {};
+    if ((!user.openid || (user.expires_in || Date.now()) < (Date.now() + 600)) && (!userInfo.nickName)) {
+      wx.login({
+        success: function (res) {
+          if (res.code) {
+            wx.getUserInfo({
+              success: function (res) {
+                var objz = {};
+                objz.avatarUrl = res.userInfo.avatarUrl;
+                objz.nickName = res.userInfo.nickName;
+                //console.log(objz);  
+                wx.setStorageSync('userInfo', objz);//存储userInfo  
+              }
+            });
+            var d = that.data;//这里存储了appid、secret、token串    
+            var l = 'https://api.weixin.qq.com/sns/jscode2session?appid=' + d.appid + '&secret=' + d.secret + '&js_code=' + res.code + '&grant_type=authorization_code';
+            wx.request({
+              url: l,
+              data: {},
+              method: 'GET',  
+              success: function (res) {
+                var obj = {};
+                obj.openid = res.data.openid;
+                obj.expires_in = Date.now() + res.data.expires_in;
+                //console.log(obj);  
+                wx.setStorageSync('getCodeParams.mobile', obj);//存储openid
+                wx.setStorageSync('registerParams.mobile', obj);
+              }
+            });
+          } else {
+            console.log('获取用户登录态失败！' + res.errMsg)
+          }
+        }
+      });
+    }
+  },
+
+  inputmobil: function (e) {
+    var that = this;
+    var inputValue = e.detail.value
+    this.setData({
+      'getCodeParams.mobile': inputValue,
+      'registerParams.mobile': inputValue,
+    })
   },
 
   modalinput: function () {
     var that = this;
     this.setData({
       flag: !this.data.flag,
-      'getCodeBtnProperty.loading': true,
-      'getCodeParams.mobile': '12345678911',
-      'registerParams.mobile': '12345678911',
-      'getCodeBtnProperty.titileColor': '#34B5E3',
-      'getCodeBtnProperty.disabled': false
     })
+    console.log(that.data.getCodeParams)
     wx.request({
       url: config.user.getcode,
       data: that.data.getCodeParams,
@@ -189,6 +233,27 @@ Page({
 
   },
 
+  modalinput2: function () {
+    var that = this
+    this.setData({
+      flag2: !this.data.flag2,
+
+    })
+  },
+  cancle2: function () {
+    this.setData({
+      flag2: true
+    });
+  },
+
+  confirm2: function () {
+    var that = this;
+    this.setData({
+      flag2: true,
+      'codeTfFocus': true
+    })
+  },
+
   codeTfInput: function (e) {
     console.log(e)
     var that = this
@@ -208,5 +273,4 @@ Page({
       })
     }
   },
-
 })

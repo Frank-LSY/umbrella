@@ -1,17 +1,17 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/login/login",
     "pages/service/service",
     "pages/user/user",
-    "pages/Register/Register",
     "pages/explain/explain",
     "pages/mywallet/mywallet",
     "pages/myredbag/myredbag",
     "pages/userecord/userecord",
     "pages/repaire/repaire",
     "pages/umbrellapoint/umbrellapoint",
-    "pages/sponsor/sponsor"
+    "pages/sponsor/sponsor",
+    "pages/login/login",
+    "pages/Register/Register"
   ],
   "window": {
     "backgroundTextStyle": "light",
