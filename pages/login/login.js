@@ -1,7 +1,10 @@
 var md5 = require("../../systemcall/MD5.js")
 var init = require("../../systemcall/init.js")
 var config = require('../../router.js');
-var all=require("../../data/all.js")
+//动态数据
+const Dynamic=require("../../systemcall/Storage.js");
+//静态数据
+const Static=require("../../systemcall/Static.js")
 var app = getApp()
 var inputValue = ''
 
@@ -17,8 +20,7 @@ Page({
   },
 
   onLoad: function (options) {
-    // 生命周期函数--监听页面加载
-
+    Dynamic.setCurrentStatus(Static.Statuses.Unusing);
   },
   /*打开模态框*/
   showModal: function () {

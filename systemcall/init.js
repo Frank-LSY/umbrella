@@ -1,4 +1,4 @@
-//检查网络状态
+//得到
 var router=require("../router.js")
 wx.request({
   url: router.user.get_station_location,
