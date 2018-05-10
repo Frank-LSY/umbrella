@@ -81,7 +81,7 @@ Page({
    */
   onLoad: function (options) {
     that = this;
-    if (DynamictgetCurrentStatus === Static.Statuses.Using) {
+    if (Dynamic.getCurrentStatus === Static.Statuses.Using) {
       that.setData({ using: true });
     }
   },

@@ -1,5 +1,6 @@
 {
   "usingComponents": {
-    "zan-tab": "../../dist/tab/index"
+    "zan-tab": "../../dist/tab/index",
+    "zan-card": "../../dist/card/index"
   }
 }
