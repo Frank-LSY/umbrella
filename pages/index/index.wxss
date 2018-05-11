@@ -25,6 +25,7 @@ cover-view {
   float: right;
   margin-right: 4%;
   margin-top: 2.5%;
+
 }
 
 .information {

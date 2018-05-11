@@ -1,3 +1,4 @@
+
 module.exports={
   //存储用户信息
   setUserInfo:function(user){

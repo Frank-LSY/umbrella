@@ -1,14 +1,15 @@
 var router = require('../../router.js');
+var that=null;
 Page({
   data: {
     sponsor: [],//赞助商
     activity: [],//活动
-    ac_imag: ""
-
+    ac_imag: "",
   },
   onLoad: function (e) {
-    var that = this;
+    that = this;
     /********yh_start_返回用户信息*******/
+    console.log(e);
     wx.request({
       url: router.user.sponsor,  //需要修改为红包服务wl
       data: { 'sponsor': e.sponsor_id },
@@ -23,16 +24,17 @@ Page({
         var statu = res.data.re_code
 
         if (statu == 200) {
+          wx.setNavigationBarTitle({
+            title: content.sponsor.name//页面标题为路由参数
+          })
           that.setData({
             sponsor: content.sponsor,
             activity: content.activity,
             ac_imag: router.uploads + "/" + content.activity.image,
             sp_logo: router.uploads + "/" + content.sponsor.logo
+          })
+          console.log(that.data.sponsor)
 
-          })
-          wx.setNavigationBarTitle({
-            title: content.sponsor.name//页面标题为路由参数
-          })
         } else if (statu == 400) {//赞助商错误
           console.log(res.data.code_info);
         }
@@ -45,6 +47,14 @@ Page({
         // complete
       }
     })
+    let pages=getCurrentPages();
+    console.log(pages);
   },
-
+  onUnload:function(){
+    wx.navigateBack({
+      delta: 3
+    })
+  },
+  onReady:function(){
+  }
 })
