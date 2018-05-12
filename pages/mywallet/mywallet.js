@@ -22,5 +22,6 @@ Page({
   },
   addmoney:function(){
     Function.addmoney(5);
+    return;
   }
 })

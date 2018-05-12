@@ -1,21 +1,14 @@
 /* pages/newpage/Register/Register.wxss */
 .btn-login {
-    position: absolute;
-    left: 40rpx;
-    top: 330rpx;
-    width: 670rpx;
-    height: 80rpx;
-    line-height: 80rpx;
+  width:90%;
+	height:90rpx;
+	margin:10% 5% 5% 5%
 }
 
 .btn-login2 {
-    position: absolute;
-    left: 0rpx;
-    right: 0rpx;
-    top: 630rpx;
-    width: 750rpx;
-    height: 100rpx;
-    line-height: 80rpx;
+  width:90%;
+	height:90rpx;
+	margin:15% 5% 5% 5%
 }
 
 /*image*/
@@ -157,3 +150,42 @@ radio{
 .fl { float: left;}
 .fr { float: right;}
 /* pages/Register/Register.wxss */
+
+.phoneLb {
+    position: absolute;
+    left: 20rpx;
+    top: 440rpx;
+    width: 200rpx;
+    height: 80rpx;
+    background-color: #FFFFFF;
+    font-size: 32rpx;
+    font-weight:bold;
+    font-family: Times New Roman;
+    text-align: center;
+    line-height: 80rpx;
+}
+
+.phoneLb2 {
+    position: absolute;
+    left: 500rpx;
+    top: 440rpx;
+    width: 200rpx;
+    height: 80rpx;
+    background-color: #FFFFFF;
+    font-size: 32rpx;
+    font-weight:bold;
+    font-family: Times New Roman;
+    text-align: center;
+    line-height: 80rpx;
+}
+
+.phoneTf{
+    position: absolute;
+    left: 200rpx;
+    top: 440rpx;
+    width: 295rpx;
+    height: 80rpx;
+    background-color: #FFFFFF;
+    font-size: 32rpx;
+    text-align: center;
+}

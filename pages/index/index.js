@@ -9,17 +9,19 @@ var router = require('../../router.js')
 //动态数据
 const Dynamic = require("../../systemcall/Storage.js");
 //静态数据
+
 const Static=require("../../systemcall/Static.js")
 
-var timer; //计时器
+var timer=''; //计时器
 var that = null;
 var app = getApp();
 
 Page({
   // 页面数据
   data: {
-    longitude: null,
-    latitude: null,
+    mapCtx:null,
+    longitude: 0,
+    latitude: 0,
     markers: Data.markers,    //伞点
     polyline: Data.polyline,    //路线
     controls: Data.controls,    //地图上的控点
@@ -27,13 +29,12 @@ Page({
     needmoney: Dynamic.getNeedMoney(),
     seconds: 0,
     time: '00:00:00',
-  
     cost: 0,
     using: false
   },
   onLoad: function () {
     that = this;
-
+    Dynamic.setCurrentStatus(Static.Statuses.Unusing)
     this.changeicon();    //查看当前状态改变底部的按钮图片
     if (Dynamic.getRedBag() !== 0) {  //是否有红包要领
       this.showDialog(Data.Dialogs[0]); //显示领红包的dialog
@@ -43,8 +44,7 @@ Page({
   onReady: function () {
     // 使用 wx.createMapContext 获取 map 上下文
     this.mapCtx = wx.createMapContext('map');
-    this.getCenterLocation();
-    this.moveToLocation();
+    this.click(0)
   },
 
   // 得到地图中心的位置
@@ -81,24 +81,20 @@ Page({
         break;
     }
   },
-  regionchange(e) { console.log(e.type) },
-  markertap(e) { console.log(e.markerId) },
+  regionchange(e) { },
+  markertap(e) { },
 
   // 对地图的上的controls点击事件绑定
   controltap(e) {
-    console.log(e.controlId);
     this.click(e.controlId);
     // 扫码
     if (e.controlId === 4 && Dynamic.getCurrentStatus().status !== 0) {
       that.getscan();
-    } else if (e.controlId >= 1)
+    } else if (e.controlId >= 1) {
       wx.navigateTo({
         url: Data.pages[e.controlId],
       })
-    // 跳转
-    else if (e.controlId === 4 && app.globalData.CurrentStatus.status !== 0) {
-      that.getscan();
-    } 
+    }
   },
 
   // 显示弹窗
@@ -116,7 +112,6 @@ Page({
         default:
           break;
       }
-      console.log('=== dialog with custom buttons ===', `type: ${type}`);
     });
   },
   //根据当前的状态，改变地图上控件的图片
@@ -133,38 +128,47 @@ Page({
       seccess: function (res) {
       }, fail(res) {
       }, complete(res) {
-        if (Dynamic.getCurrentStatus() === Static.Statuses.Using) {
+        if (Dynamic.getCurrentStatus().status === Static.Statuses.Using.status) {
           Dynamic.setCurrentStatus(Static.Statuses.Unusing);
           that.changeicon();
         } else {
-          Dynamic.setCurrentStatus(Static.Statuses.Using); 
+          Dynamic.setCurrentStatus(Static.Statuses.Using);
           that.changeicon();
         }
         that.setusing();
       }
     })
-    this.setData({
-      second: 0
-    })
-    var times = Function.formatTime(new Date());
-    // 再通过setData更改Page()里面的data，动态更新页面的数据  
-    clearInterval(timer);
-    this.setData({//借伞时得到时间
-      times: times,
-    });
-    timing(this);
   },
   //改变使用状态，控制计时窗口
   setusing: function () {
     that.setData({
-      using: Dynamic.getCurrentStatus() === Static.Statuses.Using ? true : false
+      using: Dynamic.getCurrentStatus().status === Static.Statuses.Using.status ? true : false
     })
-    console.log(this.data.using )
-    if(this.data.using == false){
-    clearTimeout(timer);
-    return;
+    if(this.data.using==true){
+      var times = Function.formatTime(new Date());
+      // 再通过setData更改Page()里面的data，动态更新页面的数据  
+     // clearInterval(timer);
+      this.setData({//借伞时得到时间
+        times: times,
+      });
+      timing(this);
+    }else{
+      that.setData({
+        seconds:0
+      })
+      clearTimeout(timer)
+      timer='';
     }
   },
+  //借伞时得到时间
+  settime: function () {
+    let times = Function.formatTime(new Date());
+    // 再通过setData更改Page()里面的data，动态更新页面的数据  
+    this.setData({
+      times: times
+    });
+  // timing(this);
+  }
 })
 
 function timing(that) {

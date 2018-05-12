@@ -1,4 +1,4 @@
-const Data=require("Data.js");
+
 module.exports={
   //存储用户信息
   setUserInfo:function(user){
@@ -9,52 +9,51 @@ module.exports={
   },
   //存储余额
   setBlance(blance){
-    Data.balance=blance;
+    wx.setStorageSync("blance", blance);
   },
   getBlance(){
-    return Data.balance;
+    return wx.getStorageSync("blance");
   },
   //存储当前状态
   setCurrentStatus(status){
-    Data.currentStatus=status;
+    wx.setStorageSync("currentStatus", status);
   },
-  getCurrentStatus(status) {
-    return Data.currentStatus; 
+  getCurrentStatus() {
+    return wx.getStorageSync("currentStatus");
   },
   //存储押金
   setCashPledge(cashpledge){
-    Data.cashPledge = cashpledge;
+    wx.setStorageSync("cashPledge", cashpledge);
   },
   getCashPledge(){
-    return Data.cashPledge;
+    return wx.getStorageSync("cashPledge");
   },
   //存储电话号码
   setPhoneNumber(phonenumber){
-    Data.phoneNumber=phonenumber;
+    wx.setStorageSync("phoneNumber", phonenumber);
   },
   getPhoneNumber(){
-    return Data.phoneNumber;
+    return wx.getStorageSync("phoneNumber");
   },
   //已领红包
   setHadRedBag(money){
-    Data.hadRedBag=money;
+    wx.setStorageSync("hadRedBag", money);
   },
-  getHadRedBag(money){
-    return Data.hadRedBag;
+  getHadRedBag(){
+    return wx.getStorageSync("hadRedBag");
   },
   //未领红包
   setRedBag(money){
-    Data.redBag=money;
+    wx.setStorageSync("redBag", money);
   },
   getRedBag(){
-    return Data.redBag;
+    return wx.getStorageSync("redBag");
   },
   //需要的钱
   setNeedMoney(money){
-    Data.needMoney=money;
+    wx.setStorageSync("needMoney", money);
   },
   getNeedMoney(){
-    return Data.needMoney;
+    return wx.getStorageSync("needMoney");
   }
-  
 }

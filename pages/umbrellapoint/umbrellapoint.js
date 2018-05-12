@@ -34,7 +34,7 @@ Page({
   },
   toSponsor: function (e) {
     console.log(e);
-    wx.redirectTo({
+    wx.navigateTo({
       url: '../sponsor/sponsor?sponsor_id=' + e.currentTarget.dataset.id
     })
   },

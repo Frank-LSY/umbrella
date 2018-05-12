@@ -1,12 +1,17 @@
 <!--pages/Register/Register.wxml-->
 <view class="login-bg"> 
 	  <image src="../../images/login_bg.png" class="login-bg"/> 
-    <button type="primary"bindtap="modalinput2" class='btn-login2'>选择手机号</button>   
+    <!-- <button type="primary"bindtap="modalinput2" class='btn-login2'>选择手机号</button>   
 <modal hidden="{{flag2}}" title="请选择手机号" confirm-text="更改" cancel-text="默认" bindcancel="cancle2" bindconfirm="confirm2">  
     <input class='codeTf' bindinput='inputmobil' type="number" placeholder="输入手机号" />
-</modal>
+</modal> -->
 
- <button type="primary"bindtap="modalinput">获取验证码</button>   
+ <text class='phoneLb'>手机号码</text>
+    <input class='phoneTf' maxlength="11" type="number" placeholder="{{getCodeParams.mobile}}" auto-focus/>
+    <button class='phoneLb2' style='color:{{getCodeBtnProperty.titileColor}}' type="default" bindtap='inputmobil' disabled='{{getCodeBtnProperty.disabled}}' loading='{{getCodeBtnProperty.loading}}'>绑定手机</button>
+
+
+ <button type="primary"bindtap="modalinput" class='btn-login2' loading='{{getCodeBtnProperty.loading}}'>获取验证码</button>   
 </view>  
 <modal hidden="{{flag}}" title="请输入验证码" confirm-text="提交" cancel-text="取消" bindcancel="cancle" bindconfirm="confirm">  
     <input class='codeTf' bindinput='codeTfInput' maxlength="4" type="number" placeholder="输入验证码" focus='{{codeTfFocus}}'/>

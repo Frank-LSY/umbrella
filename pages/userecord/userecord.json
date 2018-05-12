@@ -1,5 +1,7 @@
 {
+  "navigationBarTitleText": "使用记录",
   "usingComponents": {
-    "zan-tab": "../../dist/tab/index"
+    "zan-tab": "../../dist/tab/index",
+    "zan-card": "../../dist/card/index"
   }
 }

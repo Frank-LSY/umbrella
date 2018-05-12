@@ -18,7 +18,7 @@ Page({
     },
     getCodeParams: {
       token: 'umbrella-token',
-      mobile: '',
+      mobile: '12345678901',
       checksum: '',
     },
     registerParams: {

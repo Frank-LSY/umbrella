@@ -1,17 +1,9 @@
 <!--pages/newpage/userecord/userecord.wxml-->
 
 <view class="container">
-  <view class="doc-title zan-hairline--bottom">使用记录</view>
-
-  <view class="container" wx:for="{{records}}" wx:for-item="record" wx:key="index">
-    <view>{{record.position}}
-      <view>
-        借出时间：{{record.borrowtime}}
-      </view>
-      <view>
-        已借出：{{record.usedtime}}
-      </view>
-    </view>
+  <view class="doc-title zan-hairline--bottom" style='margin-bottom:30rpx;'>使用记录</view>
+  <view class="" wx:for="{{records}}" wx:for-item="record" wx:key="index">
+    <zan-card card-class="test-card" thumb="../../images/ico_wxlogin_login.png" title="借伞:{{record.borrowtime}}" price="{{record.borrowposition}}" desc="还伞:{{record.backtime}}" num="{{record.backposition}}" status="{{using?'使用完':'使用中'}}">
+    </zan-card>
   </view>
-
 </view>
