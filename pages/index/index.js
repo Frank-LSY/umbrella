@@ -144,21 +144,6 @@ Page({
     that.setData({
       using: Dynamic.getCurrentStatus().status === Static.Statuses.Using.status ? true : false
     })
-    if(this.data.using==true){
-      var times = Function.formatTime(new Date());
-      // 再通过setData更改Page()里面的data，动态更新页面的数据  
-     // clearInterval(timer);
-      this.setData({//借伞时得到时间
-        times: times,
-      });
-      timing(this);
-    }else{
-      that.setData({
-        seconds:0
-      })
-      clearTimeout(timer)
-      timer='';
-    }
   },
   //借伞时得到时间
   settime: function () {
@@ -167,9 +152,36 @@ Page({
     this.setData({
       times: times
     });
-  // timing(this);
+
+    timing(this);
+    charging(this);
   }
 })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 function timing(that) {
   var seconds = that.data.seconds
