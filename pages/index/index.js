@@ -153,35 +153,9 @@ Page({
       times: times
     });
 
-    timing(this);
-    charging(this);
+    timing(this)；
   }
 })
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 function timing(that) {
   var seconds = that.data.seconds
