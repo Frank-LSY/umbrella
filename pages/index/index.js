@@ -12,7 +12,7 @@ const Dynamic = require("../../systemcall/Storage.js");
 
 const Static=require("../../systemcall/Static.js")
 
-var timer; //计时器
+var timer=''; //计时器
 var that = null;
 var app = getApp();
 
@@ -29,7 +29,6 @@ Page({
     needmoney: Dynamic.getNeedMoney(),
     seconds: 0,
     time: '00:00:00',
-  
     cost: 0,
     using: false
   },
@@ -139,16 +138,6 @@ Page({
         that.setusing();
       }
     })
-    this.setData({
-      second: 0
-    })
-    var times = Function.formatTime(new Date());
-    // 再通过setData更改Page()里面的data，动态更新页面的数据  
-    clearInterval(timer);
-    this.setData({//借伞时得到时间
-      times: times,
-    });
-    timing(this);
   },
   //改变使用状态，控制计时窗口
   setusing: function () {
@@ -163,6 +152,7 @@ Page({
     this.setData({
       times: times
     });
+
     timing(this);
     charging(this);
   }
