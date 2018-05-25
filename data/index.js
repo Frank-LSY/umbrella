@@ -51,20 +51,10 @@ module.exports = {
       },
       iconPath:"",      
       clickable: true,
-    },
-    { //使用说明
-      id: 5, iconPath: '../../images/explain.png',
-      target: '../explain/explain',
-      position: {
-        left: 0.12 * Static.screenW,
-        top: 0.10 * Static.screenH,
-        width: 0.77 * Static.screenW,
-        height: 0.08 * Static.screenH
-      }, clickable: true
     }],
   //******controls********************/
   addcash: "点击此处充押金：30元！",
-  pages: [,'../umbrellapoint/umbrellapoint' , '../repaire/repaire', '../user/user', "../login/login", '../explain/explain'],
+  pages: [,'../umbrellapoint/umbrellapoint' , '../repaire/repaire', '../user/user', "../login/login"],
   GET_POSITION: 0,
   Dialogs: [
     // 领红包弹窗的内容
@@ -79,7 +69,5 @@ module.exports = {
         text: '领取', color: 'green', type: 'get'
       }]
     },
-
-
   ]
 }

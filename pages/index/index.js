@@ -152,8 +152,7 @@ Page({
     this.setData({
       times: times
     });
-
-    timing(this)；
+    timing(this);
   }
 })
 
