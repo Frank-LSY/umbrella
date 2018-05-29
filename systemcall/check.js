@@ -26,6 +26,20 @@ module.exports={
   },
   //检查是否注册
   checkRegister:function(user) {
+    wx.getSetting({        //检查用户是否登录
+      success: function (res) {
+        if (res.authSetting['scope.userInfo']) {
+          wx.getUserInfo({
+            success: function (res) {
+              Dynamic.setCurrentStatus(Static.Statuses.Register)
+            }
+          })
+        }
+        else {
+          Dynamic.setCurrentStatus(Static.Statuses.Unregister)
+        }
+      }
+    })
     console.log("checkuser")
     wx.request({
       url: router.user.checkuser,

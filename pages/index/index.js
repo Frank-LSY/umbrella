@@ -10,16 +10,16 @@ var router = require('../../router.js')
 const Dynamic = require("../../systemcall/Storage.js");
 //静态数据
 
-const Static=require("../../systemcall/Static.js")
+const Static = require("../../systemcall/Static.js")
 
-var timer=''; //计时器
+var timer = ''; //计时器
 var that = null;
 var app = getApp();
 
 Page({
   // 页面数据
   data: {
-    mapCtx:null,
+    mapCtx: null,
     longitude: 0,
     latitude: 0,
     markers: Data.markers,    //伞点
@@ -106,7 +106,7 @@ Page({
           break;
         case 'get':
           wx.navigateTo({
-            url: '../myredbag/myredbag',
+            url: '../Register/Register',
           })
           break;
         default:
@@ -144,6 +144,21 @@ Page({
     that.setData({
       using: Dynamic.getCurrentStatus().status === Static.Statuses.Using.status ? true : false
     })
+    if (this.data.using == true) {
+      var times = Function.formatTime(new Date());
+      // 再通过setData更改Page()里面的data，动态更新页面的数据  
+      // clearInterval(timer);
+      this.setData({//借伞时得到时间
+        times: times,
+      });
+      timing(this);
+    } else {
+      that.setData({
+        seconds: 0
+      })
+      clearTimeout(timer)
+      timer = '';
+    }
   },
   //借伞时得到时间
   settime: function () {
@@ -152,7 +167,7 @@ Page({
     this.setData({
       times: times
     });
-    timing(this);
+    // timing(this);
   }
 })
 
@@ -164,7 +179,7 @@ function timing(that) {
     });
     return;
   }
-  timer=setTimeout(function () {
+  timer = setTimeout(function () {
     that.setData({
       seconds: seconds + 1
     });

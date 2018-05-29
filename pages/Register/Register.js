@@ -4,8 +4,10 @@ Page({
   data: {
     flag: true,
     flag2: true,
-    appid: '1wqas2342dasaqwe2323424ac23qwe',//appid需自己提供
-    secret: 'e0dassdadef2424234209bwqqweqw123ccqwa',//secret需自己提供
+    input: false,
+    notinput: true,
+    // appid: 'wx5a98b010846f53f5',//appid需自己提供
+    // secret: '1d57c3992889cb86b8b9a6d752607fdd',//secret需自己提供,有后台获取并与微信服务器进行交互
     getCodeBtnProperty: {
       titileColor: '#B4B4B4',
       disabled: true,
@@ -18,7 +20,7 @@ Page({
     },
     getCodeParams: {
       token: 'umbrella-token',
-      mobile: '12345678901',
+      mobile: 123456,
       checksum: '',
     },
     registerParams: {
@@ -40,43 +42,86 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function () {
-    var that = this
-    var user = wx.getStorageSync('user') || {};
-    var userInfo = wx.getStorageSync('userInfo') || {};
-    if ((!user.openid || (user.expires_in || Date.now()) < (Date.now() + 600)) && (!userInfo.nickName)) {
-      wx.login({
-        success: function (res) {
-          if (res.code) {
-            wx.getUserInfo({
-              success: function (res) {
-                var objz = {};
-                objz.avatarUrl = res.userInfo.avatarUrl;
-                objz.nickName = res.userInfo.nickName;
-                //console.log(objz);  
-                wx.setStorageSync('userInfo', objz);//存储userInfo  
-              }
-            });
-            var d = that.data;//这里存储了appid、secret、token串    
-            var l = 'https://api.weixin.qq.com/sns/jscode2session?appid=' + d.appid + '&secret=' + d.secret + '&js_code=' + res.code + '&grant_type=authorization_code';
-            wx.request({
-              url: l,
-              data: {},
-              method: 'GET',  
-              success: function (res) {
-                var obj = {};
-                obj.openid = res.data.openid;
-                obj.expires_in = Date.now() + res.data.expires_in;
-                //console.log(obj);  
-                wx.setStorageSync('getCodeParams.mobile', obj);//存储openid
-                wx.setStorageSync('registerParams.mobile', obj);
-              }
-            });
-          } else {
-            console.log('获取用户登录态失败！' + res.errMsg)
-          }
-        }
-      });
+
+
+  },
+
+  getPhoneNumber: function (e) {
+
+    console.log(e);
+    console.log(e.detail.errMsg)
+    console.log(e.detail.iv)
+    console.log(e.detail.encryptedData)
+    if (e.detail.errMsg == 'getPhoneNumber:fail user deny') {
+      wx.showModal({
+        title: '提示',
+        showCancel: false,
+        content: '未授权',
+        success: function (res) { }
+      })
+    } else {
+      wx.showModal({
+        title: '提示',
+        showCancel: false,
+        content: '同意授权',
+        success: function (res) { }
+      })
     }
+    var that = this
+    wx.login({
+      success: function (r) {
+        var code = r.code;//登录凭证
+        if (code) {
+          //2、调用获取用户信息接口
+          wx.getUserInfo({
+            success: function (res) {
+              console.log({ encryptedData: res.encryptedData, iv: res.iv, code: code })
+              //3.请求自己的服务器，解密用户信息 获取unionId等加密信息
+              wx.request({
+                url: '192.168.0.103/xhs/manage_area/WXPhone/wxPhone',//自己的服务接口地址
+                method: 'get',
+                header: {
+                  'content-type': 'application/x-www-form-urlencoded'
+                },
+                data: { encryptedData: e.detail.encryptedData, 
+                                   iv: e.detail.iv, 
+                                   code: code 
+                                   },
+                success: function (data) {
+
+                  //4.解密成功后 获取自己服务器返回的结果
+                  if (data.data.status == 1) {
+                    var userInfo_ = data.data.userInfo;
+                    console.log(userInfo_)
+                    this.setData({
+                      input: false,
+                      notinput: true,
+                    })
+                    console.log(userInfo_.phoneNumber)
+
+                  } else {
+                    console.log('获取失败');
+                  }
+
+                },
+                fail: function () {
+                  console.log('系统错误');
+                }
+              })
+            },
+            fail: function () {
+              console.log('获取用户信息失败');
+            }
+          })
+
+        } else {
+          console.log('获取用户登录态失败！' + r.errMsg);
+        }
+      },
+      fail: function () {
+        console.log('登陆失败');
+      }
+    })
   },
 
   inputmobil: function (e) {
@@ -86,6 +131,7 @@ Page({
       'getCodeParams.mobile': inputValue,
       'registerParams.mobile': inputValue,
     })
+    console.log(inputValue);
   },
 
   modalinput: function () {
@@ -233,26 +279,6 @@ Page({
 
   },
 
-  modalinput2: function () {
-    var that = this
-    this.setData({
-      flag2: !this.data.flag2,
-
-    })
-  },
-  cancle2: function () {
-    this.setData({
-      flag2: true
-    });
-  },
-
-  confirm2: function () {
-    var that = this;
-    this.setData({
-      flag2: true,
-      'codeTfFocus': true
-    })
-  },
 
   codeTfInput: function (e) {
     console.log(e)

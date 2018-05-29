@@ -181,7 +181,7 @@ radio{
 
 .phoneTf{
     position: absolute;
-    left: 200rpx;
+    left: 100rpx;
     top: 440rpx;
     width: 295rpx;
     height: 80rpx;

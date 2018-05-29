@@ -50,11 +50,8 @@ module.exports = {
             })//endreqquest
           },
           fail: function (res) {
-
           },
           complete: function (res) {
-
-
           }
         })
       }
